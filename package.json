@@ -1,0 +1,22 @@
+{
+  "name": "1DV430",
+  "version": "1.0.0",
+  "description": "Individuellt projekt f�r kursen 1DV430",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "~1.13.2",
+    "debug": "^2.2.0",
+    "express": "~4.13.1",
+    "express-handlebars": "^3.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1dv430/rk222gg-project.git"
+  },
+  "keywords": [
+    "node.js",
+    "javascript"
+  ],
+  "author": "Rasmus Karlsson",
+  "license": "ISC"
+}

@@ -1,0 +1,71 @@
+#slotContent {
+    background-color: whitesmoke;
+    width: 1200px;
+    height: 570px;
+    margin: auto;
+    margin-bottom: 5px;
+    position: relative;
+}
+#outerMachine {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 480px;
+    background-color: dimgray;
+    border-radius: 10px;
+}
+
+#middleMachine {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    height: 85%;
+    background-color: black;
+    border-radius: 3px;
+}
+.slot {
+    float: left;
+    width: 30%;
+    margin-left: 2.2%;
+    margin-top: 0.7%;
+    height: 96%;
+    background-color: #e6e0df;
+    border-radius: 5px;
+    border: goldenrod 2px solid;
+}
+#lever1 {
+    background-color: #505050;
+    width: 90px;
+    height: 40px;
+    border-bottom-right-radius: 15px;
+    top: 400px;
+    left: 1070px;
+    position: absolute;
+}
+#lever2 {
+    background-color: #505050;
+    width: 40px;
+    height: 300px;
+    left: 1120px;
+    top: 100px;
+    position: absolute;
+}
+#leverBall {
+    background-color: red;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    position: absolute;
+    left: 1090px;
+    top: 60px;
+}
+.slotIcon {
+    width: 100%;
+    height: 50%;
+    margin-top: 80px;
+}
