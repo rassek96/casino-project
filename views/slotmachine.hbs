@@ -1,12 +1,17 @@
 <div id="header">
     <div class="linkHome">
-        <a href="/">
+        <a href="/home">
             Casino Blabla
         </a>
     </div>
 </div>
 <div id="slotContent">
     <div id="outerMachine">
+        <div id="scoreBoard">
+            <div id="scoreChips">Chips Left:<br><span>{{this.chips}}</span></div>
+            <div id="scoreSlot">Slot<br>Machine</div>
+            <div id="scoreScore">Score:<br><span>0</span></div>
+        </div>
         <div id="middleMachine">
             <div class="slot"></div>
             <div class="slot"></div>
@@ -14,6 +19,7 @@
         </div>
     </div>
     <div id="lever1"></div>
+    <div id="lever1a"></div>
     <div id="lever2"></div>
     <div id="leverBall"></div>
 </div>

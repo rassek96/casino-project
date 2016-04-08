@@ -26,27 +26,34 @@ body {
 }
 #content {
   background-color: whitesmoke;
-  width: 85%;
-  height: 600px;
+  width: 75%;
+    overflow: auto;
   margin: auto;
     margin-bottom: 5px;
 }
+#content span {
+    font-size: 24px;
+}
+#gamesDiv {
+    width: 38%;
+    margin: 1%;
+    height: 96%;
+    float: left;
+    text-align: center;
+}
+#userDiv {
+    width: 58%;
+    margin: 1%;
+    height: 96%;
+    float: right;
+    text-align: center;
+}
 #slotDiv, #blackjackDiv {
-    width: 46.5%;
-    height: 38%;
+    width: 100%;
     background-color: goldenrod;
     padding: 1%;
     border-radius: 2px;
-    display: inline-block;
-    margin-top: 1%;
-}
-#slotDiv {
-    margin-left: 1%;
-    float: left;
-}
-#blackjackDiv {
-    margin-right: 1%;
-    float: right;
+    margin-top: 2%;
 }
 
 #slotDiv:hover, #blackjackDiv:hover {

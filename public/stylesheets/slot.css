@@ -1,20 +1,58 @@
 #slotContent {
     background-color: whitesmoke;
     width: 1200px;
-    height: 570px;
+    height: 600px;
     margin: auto;
     margin-bottom: 5px;
     position: relative;
 }
-#outerMachine {
+#scoreBoard {
+    width: 90%;
     position: absolute;
-    top: 50%;
+    top: -41px;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 80%;
-    height: 480px;
+    height: 80px;
+    background-color: #505050;
+    border-top-right-radius: 40px;
+    border-top-left-radius: 40px;
+}
+#scoreChips, #scoreScore, #scoreSlot {
+    width: 31%;
+    height: 90%;
+    background-color: #151515;
+    color: whitesmoke;
+    text-align: center;
+    margin-top: 1%;
+}
+#scoreChips {
+    border-top-left-radius: 35px;
+    margin-left: 1%;
+    float: left;
+    font-size: 18px;
+}
+#scoreSlot {
+    display: inline-block;
+    margin-left: 16px;
+    font-size: 24px;
+}
+#scoreScore {
+    border-top-right-radius: 35px;
+    margin-right: 1%;
+    float: right;
+    font-size: 18px;
+}
+#outerMachine {
+    position: absolute;
+    top: 58%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 400px;
     background-color: dimgray;
     border-radius: 10px;
+    border: 1px black solid;
+    pointer-events: none;
 }
 
 #middleMachine {
@@ -24,13 +62,13 @@
     transform: translate(-50%, -50%);
     width: 95%;
     height: 85%;
-    background-color: black;
+    background-color: #151515;
     border-radius: 3px;
 }
 .slot {
     float: left;
     width: 30%;
-    margin-left: 2.2%;
+    margin-left: 2.1%;
     margin-top: 0.7%;
     height: 96%;
     background-color: #e6e0df;
@@ -39,30 +77,41 @@
 }
 #lever1 {
     background-color: #505050;
-    width: 90px;
+    width: 40px;
+    height: 80px;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+    top: 380px;
+    left: 960px;
+    position: absolute;
+    border-left: 1px solid black;
+}
+#lever1a {
+    background-color: #595959;
+    width: 30px;
     height: 40px;
-    border-bottom-right-radius: 15px;
-    top: 400px;
-    left: 1070px;
+    border-bottom-right-radius: 8px;
+    top: 398px;
+    left: 1000px;
     position: absolute;
 }
 #lever2 {
-    background-color: #505050;
-    width: 40px;
-    height: 300px;
-    left: 1120px;
-    top: 100px;
+    background-color: #545454;
+    width: 20px;
+    height: 260px;
+    left: 1010px;
+    top: 140px;
     position: absolute;
 }
 #leverBall {
     background-color: red;
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     cursor: pointer;
     position: absolute;
-    left: 1090px;
-    top: 60px;
+    left: 980px;
+    top: 100px;
 }
 .slotIcon {
     width: 100%;

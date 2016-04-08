@@ -3,6 +3,7 @@
 var express    = require("express");
 var exphbs     = require("express-handlebars");
 var bodyParser = require("body-parser");
+var session    = require("express-session");
 
 // Server configurations
 var app = express();
@@ -13,7 +14,21 @@ app.engine("hbs", exphbs({
   extname: "hbs"
 }));
 
+// session config
+app.use(session({
+  name: "serverSession",
+  secret: "5sadgasdkfh32r32f78",
+  resave: false,
+  saveUninitialized: false
+}));
+
 app.set("view engine", "hbs");
+
+app.use(function(request, response, next) {
+  response.locals.username = request.session.username;
+  response.locals.chips = request.session.chips;
+  next();
+});
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
