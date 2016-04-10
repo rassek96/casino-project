@@ -33,6 +33,10 @@ app.use(function(request, response, next) {
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
+var server = app.listen(port, function() {
+  console.log("Express server started on http://localhost:" + port);
+});
+
 app.use("/", require("./routes/home.js"));
 app.use("/", require("./routes/slotmachine.js"));
 app.use("/", require("./routes/blackjack.js"));
@@ -47,8 +51,3 @@ app.use(function(request, response) {
 app.use(function(error, request, response, next) {
   response.status(500).send("Error 500 - Internal Error");
 });
-
-app.listen(port, function() {
-  console.log("Express server started on http://localhost:" + port);
-});
-

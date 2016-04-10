@@ -1,10 +1,10 @@
 #slotContent {
-    background-color: whitesmoke;
     width: 1200px;
     height: 600px;
     margin: auto;
     margin-bottom: 5px;
     position: relative;
+    background:rgba(255,255,255,0.6);
 }
 #scoreBoard {
     width: 90%;
@@ -16,6 +16,8 @@
     background-color: #505050;
     border-top-right-radius: 40px;
     border-top-left-radius: 40px;
+    border: 1px solid black;
+    border-bottom: none;
 }
 #scoreChips, #scoreScore, #scoreSlot {
     width: 31%;
@@ -84,7 +86,7 @@
     top: 380px;
     left: 960px;
     position: absolute;
-    border-left: 1px solid black;
+    border: 1px solid black;
 }
 #lever1a {
     background-color: #595959;
@@ -92,16 +94,19 @@
     height: 40px;
     border-bottom-right-radius: 8px;
     top: 398px;
-    left: 1000px;
+    left: 1002px;
     position: absolute;
+    border: 1px solid black;
 }
 #lever2 {
     background-color: #545454;
     width: 20px;
     height: 260px;
-    left: 1010px;
+    left: 1008px;
     top: 140px;
     position: absolute;
+    border: 1px solid black;
+    border-bottom: none;
 }
 #leverBall {
     background-color: red;
@@ -110,8 +115,9 @@
     height: 80px;
     cursor: pointer;
     position: absolute;
-    left: 980px;
+    left: 978px;
     top: 100px;
+    border: 1px solid black;
 }
 .slotIcon {
     width: 100%;

@@ -5,6 +5,9 @@ var slots = document.querySelectorAll(".slot");
 var lever2 = document.querySelector("#lever2");
 var score = 0;
 var chips = document.querySelector("#scoreChips").querySelector("span").innerText;
+var slotDing = new Audio("/sounds/slotDing2.mp3");
+var slotLose = new Audio("/sounds/slotLose.mp3");
+
 lever.addEventListener("mousedown", rollSlots);
 function rollSlots() {
     lever.removeEventListener("mousedown", rollSlots);
@@ -12,6 +15,7 @@ function rollSlots() {
     document.querySelector("#scoreChips").querySelector("span").textContent = chips.toString();
     var i2 = 0;
     leverAnimation();
+    slotDing.play();
     var slotInterval = setInterval(function() {
         for (var i = 0; i < 3; i += 1) {
             var img = document.createElement("img");
@@ -22,14 +26,15 @@ function rollSlots() {
             slots[i].textContent = "";
             slots[i].appendChild(img);
         }
+
         //Stop after 20 "rolls"
-        if (i2 === 20) {
+        if (i2 === 16) {
             clearInterval(slotInterval);
             checkWin();
             lever.addEventListener("mousedown", rollSlots);
         }
         i2 += 1;
-    }, 200);
+    }, 250);
 
     function checkWin() {
         // Check if 3 in a row. Odds are around 1/30.
@@ -41,27 +46,23 @@ function rollSlots() {
         if (values[0] === values[1] && values[0] === values[2]) {
             if (values[0] === "0") {
                 console.log("winner Watermelon");
-                score += 50;
-            }
-            if (values[0] === "1") {
-                console.log("winner Cherrys");
                 score += 200;
-            }
-            if (values[0] === "2") {
+            } else if (values[0] === "1") {
+                console.log("winner Cherrys");
+                score += 2000;
+            } else if (values[0] === "2") {
                 console.log("winner Bars");
-                score += 500;
-            }
-            if (values[0] === "3") {
+                score += 5000;
+            } else if (values[0] === "3") {
                 console.log("winner Seven");
+                score += 500;
+            } else if (values[0] === "4") {
+                console.log("winner Orange");
                 score += 100;
             }
-            if (values[0] === "4") {
-                console.log("winner Orange");
-                score += 25;
-            }
             document.querySelector("#scoreScore").querySelector("span").textContent = score.toString();
-
-
+        } else {
+            slotLose.play();
         }
     }
 

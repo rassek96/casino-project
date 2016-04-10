@@ -1,0 +1,36 @@
+#blackjackContent {
+    width: 1200px;
+    margin: auto;
+    margin-bottom: 5px;
+    position: relative;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background:rgba(255,255,255,0.6);
+}
+#surface {
+    position: relative;
+    background-color: darkred;
+    width: 1000px;
+    height: 500px;
+    border-radius: 100px 100px 1000px 1000px;
+    margin: auto;
+    border: 15px solid saddlebrown;
+}
+
+#dealerBox {
+    width: 40%;
+    margin: auto;
+    height: 80px;
+    border: whitesmoke 5px solid;
+    border-top: none;
+}
+#textContent {
+    top: 20%;
+    left: 50%;
+    position: absolute;
+    font-size: 24px;
+    transform: translate(-50%, -50%);
+    color: goldenrod;
+    margin: auto;
+    pointer-events: none;
+}
