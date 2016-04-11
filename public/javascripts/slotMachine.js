@@ -5,69 +5,81 @@ var slots = document.querySelectorAll(".slot");
 var lever2 = document.querySelector("#lever2");
 var score = 0;
 var chips = document.querySelector("#scoreChips").querySelector("span").innerText;
-var slotDing = new Audio("/sounds/slotDing2.mp3");
-var slotLose = new Audio("/sounds/slotLose.mp3");
+var marginTopAttr = [-160, -360, -560, -760, -960, -1160];
+var slotReel = document.querySelectorAll(".slotReel");
 
 lever.addEventListener("mousedown", rollSlots);
 function rollSlots() {
     lever.removeEventListener("mousedown", rollSlots);
     chips -= 1;
     document.querySelector("#scoreChips").querySelector("span").textContent = chips.toString();
-    var i2 = 0;
+    reelAnimation(0, getRandomNumber());
+
+    setTimeout(function() {
+        reelAnimation(1, getRandomNumber());
+    }, 500);
+
+    setTimeout(function() {
+        reelAnimation(2, getRandomNumber());
+    }, 1000);
+
     leverAnimation();
-    slotDing.play();
-    var slotInterval = setInterval(function() {
-        for (var i = 0; i < 3; i += 1) {
-            var img = document.createElement("img");
-            var number = getRandomNumber();
-            img.setAttribute("class", "slotIcon");
-            img.setAttribute("value", number);
-            img.setAttribute("src", "/images/SlotIcons/" + number + ".jpg");
-            slots[i].textContent = "";
-            slots[i].appendChild(img);
-        }
-
-        //Stop after 20 "rolls"
-        if (i2 === 16) {
-            clearInterval(slotInterval);
-            checkWin();
-            lever.addEventListener("mousedown", rollSlots);
-        }
-        i2 += 1;
-    }, 250);
-
-    function checkWin() {
-        // Check if 3 in a row. Odds are around 1/30.
-        var values = [
-            slots[0].querySelector("img").getAttribute("value"),
-            slots[1].querySelector("img").getAttribute("value"),
-            slots[2].querySelector("img").getAttribute("value")
-        ];
-        if (values[0] === values[1] && values[0] === values[2]) {
-            if (values[0] === "0") {
-                console.log("winner Watermelon");
-                score += 200;
-            } else if (values[0] === "1") {
-                console.log("winner Cherrys");
-                score += 2000;
-            } else if (values[0] === "2") {
-                console.log("winner Bars");
-                score += 5000;
-            } else if (values[0] === "3") {
-                console.log("winner Seven");
-                score += 500;
-            } else if (values[0] === "4") {
-                console.log("winner Orange");
-                score += 100;
-            }
-            document.querySelector("#scoreScore").querySelector("span").textContent = score.toString();
-        } else {
-            slotLose.play();
-        }
-    }
-
-
 }
+
+function reelAnimation(i, numberStop) {
+    var pos = -160;
+    var spins = 0;
+    console.log(pos);
+    slotReel[i].style.webkitFilter = "blur(1px)";
+    var slotInterval = setInterval(function() {
+        //Stop after 16 "rolls"
+        if (pos === marginTopAttr[numberStop] && spins > 3) {
+            clearInterval(slotInterval);
+            slotReel[i].style.webkitFilter = "blur(0px)";
+            slotReel[i].setAttribute("value", numberStop);
+            if (i === 2) {
+                checkWin();
+            }
+            lever.addEventListener("mousedown", rollSlots);
+        } else {
+            if (pos === -1220) {
+                slotReel[i].style.marginTop = -160 + "px";
+                pos = -0;
+                spins += 1;
+            }
+            pos -= 10;
+            slotReel[i].style.marginTop = pos + "px";
+        }
+    }, 10);
+}
+
+function checkWin() {
+    // Check if 3 in a row. Odds are around 1/30.
+    var values = [slotReel[0].getAttribute("value"), slotReel[1].getAttribute("value"), slotReel[2].getAttribute("value")];
+    if (values[0] === values[1] && values[0] === values[2]) {
+        if (values[0] === "0") {
+            console.log("winner Big Win");
+            score += 10000;
+        } else if (values[0] === "1") {
+            console.log("winner Cherrys");
+            score += 2000;
+        } else if (values[0] === "2") {
+            console.log("winner Bars");
+            score += 5000;
+        } else if (values[0] === "3") {
+            console.log("winner Seven");
+            score += 700;
+        } else if (values[0] === "4") {
+            console.log("winner Orange");
+            score += 200;
+        } else if (values[0] === "5") {
+            console.log("winner Watermelon");
+            score += 200;
+        }
+        document.querySelector("#scoreScore").querySelector("span").textContent = score.toString();
+    }
+}
+
 function leverAnimation() {
     var leverInterval = setInterval(function() {
         lever.style.top = (lever.offsetTop + 5 + "px");

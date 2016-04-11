@@ -4,6 +4,7 @@ var express    = require("express");
 var exphbs     = require("express-handlebars");
 var bodyParser = require("body-parser");
 var session    = require("express-session");
+var move = require("move-js");
 
 // Server configurations
 var app = express();
