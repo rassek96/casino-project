@@ -1,17 +1,16 @@
 #blackjackContent {
     width: 1200px;
+    min-height: 90%;
     margin: auto;
-    margin-bottom: 5px;
     position: relative;
     padding-top: 10px;
-    padding-bottom: 10px;
     background:rgba(255,255,255,0.6);
 }
 #surface {
     position: relative;
     background-color: darkred;
     width: 1000px;
-    height: 500px;
+    height: 400px;
     border-radius: 100px 100px 1000px 1000px;
     margin: auto;
     border: 15px solid saddlebrown;
@@ -25,7 +24,7 @@
     border-top: none;
 }
 #textContent {
-    top: 20%;
+    top: 25%;
     left: 50%;
     position: absolute;
     font-size: 24px;
