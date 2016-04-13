@@ -29,11 +29,10 @@ function rollSlots() {
 function reelAnimation(i, numberStop) {
     var pos = -160;
     var spins = 0;
-    console.log(pos);
     slotReel[i].style.webkitFilter = "blur(1px)";
     var slotInterval = setInterval(function() {
-        //Stop after 16 "rolls"
-        if (pos === marginTopAttr[numberStop] && spins > 3) {
+        //Stop reel
+        if (pos === marginTopAttr[numberStop] && ((i === 0 && spins > 2) || (i === 1 && spins > 3) || (i === 2 && spins > 4))) {
             clearInterval(slotInterval);
             slotReel[i].style.webkitFilter = "blur(0px)";
             slotReel[i].setAttribute("value", numberStop);
@@ -47,10 +46,10 @@ function reelAnimation(i, numberStop) {
                 pos = -0;
                 spins += 1;
             }
-            pos -= 10;
+            pos -= 20;
             slotReel[i].style.marginTop = pos + "px";
         }
-    }, 10);
+    }, 16);
 }
 
 function checkWin() {
