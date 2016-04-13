@@ -1,16 +1,16 @@
 "use strict";
 
-var lever = document.querySelector("#leverBall");
+var spinBtn = document.querySelector("#spinBtn");
 var slots = document.querySelectorAll(".slot");
-var lever2 = document.querySelector("#lever2");
 var score = 0;
 var chips = document.querySelector("#scoreChips").querySelector("span").innerText;
 var marginTopAttr = [-160, -360, -560, -760, -960, -1160];
 var slotReel = document.querySelectorAll(".slotReel");
 
-lever.addEventListener("mousedown", rollSlots);
+spinBtn.addEventListener("click", rollSlots);
 function rollSlots() {
-    lever.removeEventListener("mousedown", rollSlots);
+    spinBtn.removeEventListener("click", rollSlots);
+    spinBtn.style.backgroundColor = "#e6e600";
     chips -= 1;
     document.querySelector("#scoreChips").querySelector("span").textContent = chips.toString();
     reelAnimation(0, getRandomNumber());
@@ -22,8 +22,6 @@ function rollSlots() {
     setTimeout(function() {
         reelAnimation(2, getRandomNumber());
     }, 1000);
-
-    leverAnimation();
 }
 
 function reelAnimation(i, numberStop) {
@@ -38,8 +36,11 @@ function reelAnimation(i, numberStop) {
             slotReel[i].setAttribute("value", numberStop);
             if (i === 2) {
                 checkWin();
+                spinBtn.style.backgroundColor = "white";
+                setTimeout(function() {
+                  spinBtn.addEventListener("click", rollSlots);
+                }, 1000);
             }
-            lever.addEventListener("mousedown", rollSlots);
         } else {
             if (pos === -1220) {
                 slotReel[i].style.marginTop = -160 + "px";
@@ -79,6 +80,7 @@ function checkWin() {
     }
 }
 
+/* Scrapped lever animation code
 function leverAnimation() {
     var leverInterval = setInterval(function() {
         lever.style.top = (lever.offsetTop + 5 + "px");
@@ -92,6 +94,7 @@ function leverAnimation() {
         }
     }, 20);
 }
+*/
 
 function getRandomNumber() {
     return Math.floor(Math.random() * 5);
