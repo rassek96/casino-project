@@ -1,6 +1,7 @@
 #slotContent {
     width: 1200px;
     height: 91%;
+    min-height: 600px;
     margin: auto;
     position: relative;
     background:rgba(255,255,255,0.6);

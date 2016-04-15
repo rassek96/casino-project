@@ -1,6 +1,8 @@
 #blackjackContent {
-    width: 1200px;
-    min-height: 90%;
+    min-width: 1200px;
+    width: 95%;
+    height: 91%;
+    min-height: 600px;
     margin: auto;
     position: relative;
     padding-top: 10px;
@@ -9,8 +11,8 @@
 #surface {
     position: relative;
     background-color: darkred;
-    width: 1000px;
-    height: 400px;
+    width: 90%;
+    height: 90%;
     border-radius: 100px 100px 1000px 1000px;
     margin: auto;
     border: 15px solid saddlebrown;
@@ -19,17 +21,62 @@
 #dealerBox {
     width: 40%;
     margin: auto;
-    height: 80px;
+    height: 200px;
     border: whitesmoke 5px solid;
     border-top: none;
 }
 #textContent {
-    top: 25%;
     left: 50%;
+    top: 220px;
     position: absolute;
     font-size: 24px;
     transform: translate(-50%, -50%);
     color: goldenrod;
     margin: auto;
     pointer-events: none;
+}
+#dealerCardBox {
+  width: 181.5px;
+  height: 125px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 4px groove lightgray;
+  border-top: none;
+}
+#dealerCardBox img, #playerCardBox img {
+  width: 100%;
+  height: 100%;
+}
+
+#playerCardBox {
+  width: 125px;
+  height: 181.5px;
+  position: absolute;;
+  margin:auto;
+  bottom: 0;
+  left: 50%;
+  margin-left: -62.5px;
+  margin-bottom: 40px;
+  border: 2px solid whitesmoke;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+}
+
+#buttons {
+  
+}
+#hitBtn {
+
+}
+#stayBtn {
+
+}
+#doubleDownBtn {
+
+}
+#surrenderBtn {
+
 }
