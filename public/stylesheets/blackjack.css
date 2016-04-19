@@ -6,7 +6,6 @@
     margin: auto;
     position: relative;
     padding-top: 10px;
-    background:rgba(255,255,255,0.6);
 }
 #surface {
     position: relative;
@@ -23,13 +22,12 @@
     margin: auto;
     height: 200px;
     border: whitesmoke 5px solid;
-    border-top: none;
 }
 #textContent {
     left: 50%;
-    top: 220px;
+    top: 235px;
     position: absolute;
-    font-size: 24px;
+    font-size: 26px;
     transform: translate(-50%, -50%);
     color: goldenrod;
     margin: auto;
@@ -42,41 +40,75 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 4px groove lightgray;
-  border-top: none;
+  border-bottom: 6px groove whitesmoke;
+  border-left: 2px groove whitesmoke;
+  border-right: 2px groove whitesmoke;
 }
 #dealerCardBox img, #playerCardBox img {
   width: 100%;
   height: 100%;
+  border-radius: 6px;
 }
 
 #playerCardBox {
   width: 125px;
   height: 181.5px;
-  position: absolute;;
+  position: absolute;
   margin:auto;
   bottom: 0;
   left: 50%;
   margin-left: -62.5px;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
   border: 2px solid whitesmoke;
   color: white;
   font-size: 20px;
   text-align: center;
 }
-
+#playerScore {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#startGame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 #buttons {
-  
+  width: 500px;
+  height: auto;
+  position: absolute;
+  top: -65px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+}
+#hitBtn, #stayBtn, #doubleDownBtn, #surrenderBtn, #startBtn {
+  border: none;
+  width: 100px;
+  height: 60px;
+  padding: 1px;
+  font-size: 20px;
+  border: 3px groove whitesmoke;
+  border-top: none;
+  float: left;
+  margin: 12px;
+}
+#hitBtn:active, #stayBtn:active, #doubleDownBtn:active, #surrenderBtn:active, #startBtn:active {
+  border: none;
+  background-color: white;
 }
 #hitBtn {
-
+  border-left: none;
 }
 #stayBtn {
-
+  border-left: none;
 }
 #doubleDownBtn {
-
+  border-right: none;
 }
 #surrenderBtn {
-
+  border-right: none;
 }
