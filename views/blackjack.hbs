@@ -1,17 +1,31 @@
 <div id="blackjackContent">
   <div id="dealerBox">
-    <div id="dealerCardBox"><img src="/images/carddeck/card_backside.jpg"></div>
-    <div id="textContent">Blackjack</div>
+    <div id="dealerDeckBox"><img src="/images/carddeck/card_backside.jpg"></div>
+    <!--<div id="textContent">Blackjack</div>-->
+    <div id="dealerCardBox">
+      <div id="dealerScore">0</div>
+    </div>
+
     <div id="startGame">
+      <p>Welcome to Blackjack</p>
       <button id="startBtn">Start Game</button>
     </div>
   </div>
+
+
   <div id="playerCardBox">
     <div id="buttons">
-      <button id="hitBtn">Hit</button>
-      <button id="stayBtn">Stay</button>
-      <button id="doubleDownBtn">Double Down</button>
-      <button id="surrenderBtn">Surrender</button>
+      <div id="btn">
+        <button id="hitBtn">Hit</button>
+        <button id="stayBtn">Stay</button>
+        <button id="doubleDownBtn">Double Down</button>
+        <button id="surrenderBtn">Surrender</button>
+      </div>
+
+      <div id="aceButtons">Ace worth 1 or 11?<br>
+        <button id="ace1Btn">1</button>
+        <button id="ace11Btn">11</button>
+      </div>
     </div>
     <div id="playerScore">0</div>
   </div>
