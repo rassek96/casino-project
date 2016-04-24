@@ -66,6 +66,10 @@ body {
     margin-bottom: 3%;
     float: left;
 }
+#blackjackDiv img {
+  padding-top: 7.5%;
+  padding-bottom: 2%;
+}
 
 #slotDiv:hover, #blackjackDiv:hover, #wheelDiv:hover {
     background-color: whitesmoke;

@@ -58,22 +58,16 @@ function checkWin() {
     var values = [slotReel[0].getAttribute("value"), slotReel[1].getAttribute("value"), slotReel[2].getAttribute("value")];
     if (values[0] === values[1] && values[0] === values[2]) {
         if (values[0] === "0") {
-            console.log("winner Big Win");
             score += 10000;
         } else if (values[0] === "1") {
-            console.log("winner Cherrys");
             score += 2000;
         } else if (values[0] === "2") {
-            console.log("winner Bars");
             score += 5000;
         } else if (values[0] === "3") {
-            console.log("winner Seven");
             score += 700;
         } else if (values[0] === "4") {
-            console.log("winner Orange");
             score += 200;
         } else if (values[0] === "5") {
-            console.log("winner Watermelon");
             score += 200;
         }
         document.querySelector("#scoreScore").querySelector("span").textContent = score.toString();
