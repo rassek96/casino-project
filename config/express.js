@@ -42,7 +42,7 @@ module.exports = function () {
   app.use("/", require("../routes/slotmachine.js"));
   app.use("/", require("../routes/blackjack.js"));
 
-  app.use(express.static("public"));
+  //app.use(express.static("public"));
 
   app.use(function(request, response) {
     response.status(404);
