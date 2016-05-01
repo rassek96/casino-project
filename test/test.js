@@ -1,6 +1,8 @@
 "use strict";
 
-var expect = require("chai").expect;
+var chai = require("chai");
+var expect = chai.expect;
+
 var shuffleDeck = require("../public/javascripts/blackjack/shuffleDeck");
 var checkWin = require("../public/javascripts/blackjack/checkWin");
 

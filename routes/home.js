@@ -19,7 +19,7 @@ router.route("/home")
     })
     .post(function(request, response) {
         request.session.username = request.body.nameText;
-        request.session.chips = 20;
+        request.session.chips = 50;
         response.redirect("/home");
     });
 

@@ -1,5 +1,6 @@
 "use strict";
 
+var socket = io();
 var spinBtn = document.querySelector("#spinBtn");
 var slots = document.querySelectorAll(".slot");
 var score = 0;
@@ -9,9 +10,11 @@ var slotReel = document.querySelectorAll(".slotReel");
 
 spinBtn.addEventListener("click", rollSlots);
 function rollSlots() {
+  if(chips > 0) {
     spinBtn.removeEventListener("click", rollSlots);
     spinBtn.style.backgroundColor = "#e6e600";
     chips -= 1;
+    socket.emit("changeChips", {chips: chips});
     document.querySelector("#scoreChips").querySelector("span").textContent = chips.toString();
     reelAnimation(0, getRandomNumber());
 
@@ -22,6 +25,9 @@ function rollSlots() {
     setTimeout(function() {
         reelAnimation(2, getRandomNumber());
     }, 1000);
+  } else {
+    document.querySelector("#scoreChips").querySelector("span").textContent = "Out of chips";
+  }
 }
 
 function reelAnimation(i, numberStop) {
@@ -39,7 +45,7 @@ function reelAnimation(i, numberStop) {
                 spinBtn.style.backgroundColor = "white";
                 setTimeout(function() {
                   spinBtn.addEventListener("click", rollSlots);
-                }, 1000);
+                }, 500);
             }
         } else {
             if (pos === -1220) {
@@ -58,18 +64,32 @@ function checkWin() {
     var values = [slotReel[0].getAttribute("value"), slotReel[1].getAttribute("value"), slotReel[2].getAttribute("value")];
     if (values[0] === values[1] && values[0] === values[2]) {
         if (values[0] === "0") {
-            score += 10000;
+          // 50
+          chips += 100;
+          score += 10000;
         } else if (values[0] === "1") {
-            score += 2000;
+          // 10
+          chips += 20;
+          score += 2000;
         } else if (values[0] === "2") {
-            score += 5000;
+          // 20
+          chips += 50;
+          score += 5000;
         } else if (values[0] === "3") {
-            score += 700;
+          // 7
+          chips += 7;
+          score += 700;
         } else if (values[0] === "4") {
-            score += 200;
+          // 5
+          chips += 10;
+          score += 200;
         } else if (values[0] === "5") {
-            score += 200;
+          // 5
+          chips += 5;
+          score += 200;
         }
+        socket.emit("changeChips", {chips: chips});
+        document.querySelector("#scoreChips").querySelector("span").textContent = chips.toString();
         document.querySelector("#scoreScore").querySelector("span").textContent = score.toString();
     }
 }

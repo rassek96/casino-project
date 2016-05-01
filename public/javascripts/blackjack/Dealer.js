@@ -1,5 +1,6 @@
 "use strict";
 
+var socket = io();
 var dealerCardBox = document.querySelector("#dealerCardBox");
 var dealerScore = document.querySelector("#dealerScore");
 var hitBtn = document.querySelector("#hitBtn");
@@ -8,11 +9,13 @@ var buttonsDiv = document.querySelector("#buttons");
 var startGameDiv = document.querySelector("#startGame");
 var startBtn = document.querySelector("#startBtn");
 
-function Dealer(shuffledDeck, cardCount, playerTotal) {
+function Dealer(shuffledDeck, cardCount, playerTotal, playerChips, bet) {
   this.shuffledDeck = shuffledDeck;
   this.cardCount = cardCount;
   this.playerTotal = playerTotal;
   this.total = 0;
+  this.playerChips = playerChips;
+  this.bet = bet;
 };
 
 Dealer.prototype.hit = function() {
@@ -20,6 +23,8 @@ Dealer.prototype.hit = function() {
   var cardCount = this.cardCount;
   var playerTotal = this.playerTotal;
   var total = this.total;
+  var playerChips = this.playerChips;
+  var bet = this.bet;
   var hitInterval = setInterval(function() {
     var card = shuffledDeck[cardCount];
     //Add cardvalue to total sum
@@ -32,13 +37,24 @@ Dealer.prototype.hit = function() {
       var cardImg = dealerCardBox.querySelector("img");
       dealerCardBox.removeChild(cardImg);
     }
-    total += cardValue;
-    dealerScore.textContent = total;
     cardImg = document.createElement("img");
     cardImg.setAttribute("src", "/images/carddeck/" + card + ".png");
     dealerCardBox.appendChild(cardImg);
+
+    if(cardValue === 1) {
+      if(total === 10 || !(total + 11 > 21) || ( !(total + 11 > 21) && (total + 11 > playerTotal)) ) {
+        cardValue = 11;
+      } else {
+        cardValue = 1;
+      }
+    }
+    total += cardValue;
+    dealerScore.textContent = total;
     if (total > 21) {
       clearInterval(hitInterval);
+      playerChips += (bet * 2);
+      document.querySelector("#playerChips span").textContent = playerChips;
+      socket.emit("changeChips", {chips: playerChips});
       stay();
       startGameDiv.querySelector("p").textContent = "Winner";
 

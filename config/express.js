@@ -3,7 +3,8 @@
 var express    = require("express");
 var exphbs     = require("express-handlebars");
 var bodyParser = require("body-parser");
-var session    = require("express-session");
+var expressSession    = require("express-session");
+var sharedSession = require("express-socket.io-session");
 
 module.exports = function () {
   // Server configurations
@@ -16,12 +17,13 @@ module.exports = function () {
   }));
 
   // session config
-  app.use(session({
+  var session = expressSession({
     name: "serverSession",
     secret: "5sadgasdkfh32r32f78",
-    resave: false,
-    saveUninitialized: false
-  }));
+    resave: true,
+    saveUninitialized: true
+  });
+  app.use(session);
 
   app.set("view engine", "hbs");
 
@@ -38,11 +40,19 @@ module.exports = function () {
     console.log("Express server started on http://localhost:" + port);
   });
 
+  //Websocket
+  var socket = require("../config/socket");
+  var io = require("socket.io")(server);
+  io.use(sharedSession(session, {
+    autoSave: true
+  }));
+  socket(io);
+
   app.use("/", require("../routes/home.js"));
   app.use("/", require("../routes/slotmachine.js"));
   app.use("/", require("../routes/blackjack.js"));
 
-  //app.use(express.static("public"));
+  app.use(express.static("public"));
 
   app.use(function(request, response) {
     response.status(404);

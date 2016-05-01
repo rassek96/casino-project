@@ -9,6 +9,18 @@
     <div id="startGame">
       <p>Welcome to Blackjack</p>
       <button id="startBtn">Start Game</button>
+      <br>
+      Bet amount:
+      <select>
+        <option value="1">1</option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+        <option value="25">25</option>
+        <option value="50">50</option>
+        <option value="All">All</option>
+      </select>
     </div>
   </div>
 
@@ -28,6 +40,8 @@
       </div>
     </div>
     <div id="playerScore">0</div>
+    <div id="playerChips">Chips: <span>{{this.chips}}</span></div>
   </div>
 </div>
+<script src="/socket.io/socket.io.js"></script>
 <script src="/javascripts/blackJackBundle.js"></script>
