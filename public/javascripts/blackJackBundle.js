@@ -49,13 +49,16 @@ function startTheGame() {
 
   betFoo();
   playerChipsDiv.textContent = playerChips;
+  playerScore.textContent = 0;
   socket.emit("changeChips", {chips: playerChips});
   cardCount = 0;
   total = 0;
   gamesPlayed += 1;
   doubleDownCheck = false;
   shuffledDeck = shuffleDeck();
-  hit();
+  setTimeout(function() {
+    hit();
+  }, 6000);
 }
 
 function hit() {
@@ -74,8 +77,8 @@ function hit() {
   var pixels = playerCardBox.offsetTop;
   var moveCard = document.querySelectorAll(".cardImg");
   move(moveCard[cardCount])
-    .add("top", (pixels-33))
-    .add("left", 3)
+    .add("top", (pixels-36))
+    .add("left", 2)
     .rotate(180)
     .end();
 
@@ -317,6 +320,8 @@ module.exports = function () {
   var temporaryValue;
   var randomIndex;
 
+  shuffleAnimation();
+
   while(currentIndex !== 0) {
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex -= 1;
@@ -326,6 +331,39 @@ module.exports = function () {
     shuffleDeck[randomIndex] = temporaryValue;
   }
   return shuffleDeck;
+}
+var deckCardImg = document.querySelectorAll(".deckCard");
+var i = 0;
+function shuffleAnimation() {
+  move(deckCardImg[0]).y(150).end();
+  move(deckCardImg[1]).y(150).end();
+  move(deckCardImg[2]).y(150).end();
+  move(deckCardImg[3]).y(150).end();
+  move(deckCardImg[4]).y(150).end();
+  move(deckCardImg[5]).y(150).end(function() {
+    move(deckCardImg[0]).y(300).end();
+    move(deckCardImg[1]).y(300).delay("0.3s").end();
+    move(deckCardImg[2]).y(300).delay("0.6s").end();
+    move(deckCardImg[3]).y(300).delay("0.9s").end();
+    move(deckCardImg[4]).y(300).delay("1.2s").end();
+    move(deckCardImg[5]).y(300).delay("1.5s").end();
+
+    setTimeout(function() {
+      move(deckCardImg[0]).y(150).end();
+      move(deckCardImg[1]).y(150).delay("0.2s").end();
+      move(deckCardImg[2]).y(150).delay("0.4s").end();
+      move(deckCardImg[3]).y(150).delay("0.6s").end();
+      move(deckCardImg[4]).y(150).delay("0.8s").end();
+      move(deckCardImg[5]).y(150).delay("1s").end(function() {
+        move(deckCardImg[0]).y(0).end();
+        move(deckCardImg[1]).y(0).end();
+        move(deckCardImg[2]).y(0).end();
+        move(deckCardImg[3]).y(0).end();
+        move(deckCardImg[4]).y(0).end();
+        move(deckCardImg[5]).y(0).end();
+      });
+    }, 1501);
+  });
 }
 
 function getDeck() {

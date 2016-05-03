@@ -48,13 +48,16 @@ function startTheGame() {
 
   betFoo();
   playerChipsDiv.textContent = playerChips;
+  playerScore.textContent = 0;
   socket.emit("changeChips", {chips: playerChips});
   cardCount = 0;
   total = 0;
   gamesPlayed += 1;
   doubleDownCheck = false;
   shuffledDeck = shuffleDeck();
-  hit();
+  setTimeout(function() {
+    hit();
+  }, 6000);
 }
 
 function hit() {
@@ -73,8 +76,8 @@ function hit() {
   var pixels = playerCardBox.offsetTop;
   var moveCard = document.querySelectorAll(".cardImg");
   move(moveCard[cardCount])
-    .add("top", (pixels-33))
-    .add("left", 3)
+    .add("top", (pixels-36))
+    .add("left", 2)
     .rotate(180)
     .end();
 
