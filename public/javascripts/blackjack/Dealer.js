@@ -33,13 +33,22 @@ Dealer.prototype.hit = function() {
     if(cardValue === 11 || cardValue === 12 || cardValue === 13) {
       cardValue = 10;
     }
-    if(total !== 0) {
+    /*if(total !== 0) {
       var cardImg = dealerCardBox.querySelector("img");
       dealerCardBox.removeChild(cardImg);
-    }
-    cardImg = document.createElement("img");
+    }*/
+    var cardImg = document.createElement("img");
     cardImg.setAttribute("src", "/images/carddeck/" + card + ".png");
-    dealerCardBox.appendChild(cardImg);
+    cardImg.setAttribute("class", "cardImg");
+    document.querySelector("#dealerDeckBox").appendChild(cardImg);
+    var pixels = dealerCardBox.offsetLeft;
+    var moveCard = document.querySelectorAll(".cardImg");
+    move(moveCard[cardCount])
+      .add("left", -167)
+      .add("top", 13)
+      .rotate(180)
+      .end();
+    //dealerCardBox.appendChild(cardImg);
 
     if(cardValue === 1) {
       if(total === 10 || !(total + 11 > 21) || ( !(total + 11 > 21) && (total + 11 > playerTotal)) ) {
@@ -49,6 +58,7 @@ Dealer.prototype.hit = function() {
       }
     }
     total += cardValue;
+    cardCount += 1;
     dealerScore.textContent = total;
     if (total > 21) {
       clearInterval(hitInterval);
@@ -63,7 +73,6 @@ Dealer.prototype.hit = function() {
       stay();
       startGameDiv.querySelector("p").textContent = "Loser";
     }
-    cardCount += 1;
   }, 1000);
 };
 

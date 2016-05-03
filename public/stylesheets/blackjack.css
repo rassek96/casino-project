@@ -44,7 +44,18 @@
   border-left: 2px groove whitesmoke;
   border-right: 2px groove whitesmoke;
 }
-#dealerDeckBox img, #playerCardBox img, #dealerCardBox img {
+.cardImg {
+  transform: rotate(90deg);
+  width: 125px;
+  height: 181.5px;
+  border-radius: 6px;
+  position: absolute;
+  left: 28px;
+  top: -28px;
+  pointer-events: none;
+  z-index: 2;
+}
+#deckCard {
   width: 100%;
   height: 100%;
   border-radius: 6px;
@@ -52,6 +63,7 @@
   left: 0;
   top: 0;
   pointer-events: none;
+  z-index: 3;
 }
 #dealerCardBox {
   width: 125px;
@@ -61,8 +73,8 @@
   color: white;
   font-size: 20px;
   text-align: center;
-  margin-top: -100px;
-  margin-left: 9px;
+  margin-top: -16px;
+  margin-left: -141px;
 }
 #playerCardBox {
   width: 125px;
@@ -77,6 +89,7 @@
   color: white;
   font-size: 20px;
   text-align: center;
+  z-index: 1;
 }
 #playerScore, #dealerScore {
   position: absolute;

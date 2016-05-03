@@ -1,9 +1,10 @@
 <div id="blackjackContent">
   <div id="dealerBox">
-    <div id="dealerDeckBox"><img src="/images/carddeck/card_backside.jpg"></div>
-    <!--<div id="textContent">Blackjack</div>-->
-    <div id="dealerCardBox">
-      <div id="dealerScore">0</div>
+    <div id="dealerDeckBox">
+      <img id="deckCard" src="/images/carddeck/card_backside.jpg">
+      <div id="dealerCardBox">
+        <div id="dealerScore">0</div>
+      </div>
     </div>
 
     <div id="startGame">
@@ -24,7 +25,6 @@
     </div>
   </div>
 
-
   <div id="playerCardBox">
     <div id="buttons">
       <div id="btn">
@@ -43,5 +43,6 @@
     <div id="playerChips">Chips: <span>{{this.chips}}</span></div>
   </div>
 </div>
+<script type="text/javascript" src="/javascripts/move.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="/javascripts/blackJackBundle.js"></script>

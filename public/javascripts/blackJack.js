@@ -12,6 +12,7 @@ var doubleDownBtn = document.querySelector("#doubleDownBtn");
 var surrenderBtn = document.querySelector("#surrenderBtn");
 var playerCardBox = document.querySelector("#playerCardBox");
 var dealerCardBox = document.querySelector("#dealerCardBox");
+var dealerDeckBox = document.querySelector("#dealerDeckBox");
 var playerScore = document.querySelector("#playerScore");
 var buttonsDiv = document.querySelector("#buttons");
 var startGameDiv = document.querySelector("#startGame");
@@ -39,6 +40,11 @@ function startTheGame() {
   if(dealerCardBox.querySelector("img") !== null) {
     dealerCardBox.removeChild(dealerCardBox.querySelector("img"));
   }
+  if(dealerDeckBox.querySelector(".cardImg") !== null) {
+    while(dealerDeckBox.querySelectorAll(".cardImg").length > 0) {
+      dealerDeckBox.removeChild(dealerDeckBox.querySelectorAll(".cardImg")[0]);
+    }
+  }
 
   betFoo();
   playerChipsDiv.textContent = playerChips;
@@ -60,13 +66,17 @@ function hit() {
     cardValue = 10;
   }
 
-  if(playerCardBox.querySelector("img") !== null) {
-    playerCardBox.removeChild(playerCardBox.querySelector("img"));
-  }
   var cardImg = document.createElement("img");
   cardImg.setAttribute("src", "/images/carddeck/" + card + ".png");
-  playerCardBox.appendChild(cardImg);
-
+  cardImg.setAttribute("class", "cardImg");
+  document.querySelector("#dealerDeckBox").appendChild(cardImg);
+  var pixels = playerCardBox.offsetTop;
+  var moveCard = document.querySelectorAll(".cardImg");
+  move(moveCard[cardCount])
+    .add("top", (pixels-33))
+    .add("left", 3)
+    .rotate(180)
+    .end();
 
   if(cardValue === 1) {
     if(doubleDownCheck === true) {
