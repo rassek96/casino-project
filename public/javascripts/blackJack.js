@@ -25,9 +25,9 @@ var total;
 var shuffledDeck;
 var cardCount;
 var gamesPlayed = 0;
-var doubleDownCheck = false;
 var playerChips;
 var bet;
+var aceCheck;
 startBtn.addEventListener("click", startTheGame);
 
 function startTheGame() {
@@ -35,6 +35,7 @@ function startTheGame() {
   startGameDiv.style.display = "none";
   buttonsDiv.style.display = "inline";
   buttonsDiv.querySelector("#btn").style.display = "inline";
+  doubleDownBtn.style.visibility = "visible";
   document.querySelector("#dealerScore").textContent = 0;
 
   if(dealerCardBox.querySelector("img") !== null) {
@@ -53,14 +54,17 @@ function startTheGame() {
   cardCount = 0;
   total = 0;
   gamesPlayed += 1;
-  doubleDownCheck = false;
+  aceCheck = false;
   shuffledDeck = shuffleDeck();
   setTimeout(function() {
     hit();
-  }, 6000);
+  }, 6500);
 }
 
 function hit() {
+  if(cardCount > 1) {
+    doubleDownBtn.style.visibility = "hidden";
+  }
   var card = shuffledDeck[cardCount];
   //Add cardvalue to total sum
   var cardValue = card.replace(/\D/g,"");
@@ -81,33 +85,25 @@ function hit() {
     .rotate(180)
     .end();
 
-  if(cardValue === 1) {
-    if(doubleDownCheck === true) {
-      if (total < 11) {
-        cardValue = 11;
-      } else {
-        cardValue = 1;
-      }
-      total += cardValue;
-      playerScore.textContent = total;
-      checkWin();
-    } else if(cardCount === 0) {
-      cardValue = 11;
-      total += cardValue;
-      playerScore.textContent = total;
-      checkWin();
+  if(aceCheck === true) {
+    if(cardCount === 1) {
+
+    } else if((total + 11) < 11 && (total + 11) > 7) {
+      total += 11;
     } else {
-      buttonsDiv.querySelector("#btn").style.display = "none";
-      aceButtons.style.display = "inline";
-      aceButtons.querySelector("#ace1Btn").addEventListener("click", aceWorth1);
-      aceButtons.querySelector("#ace11Btn").addEventListener("click", aceWorth11);
+      total += 1;
     }
+  }
+  if(cardValue === 1) {
+    aceCheck = true;
+    cardValue = 0;
   } else {
-    total += cardValue;
-    playerScore.textContent = total;
-    checkWin();
+    aceCheck = false;
   }
 
+  total += cardValue;
+  playerScore.textContent = total;
+  checkWin();
   cardCount += 1;
   if(cardCount === 1) {
     setTimeout(function() {
@@ -119,6 +115,14 @@ function hit() {
 
 function stay() {
   removeBtnEventListeners();
+  if(aceCheck === true) {
+    if((total + 11) < 22) {
+      total += 11;
+    } else {
+      total += 1;
+    }
+    playerScore.textContent = total;
+  }
   buttonsDiv.style.display = "none";
   buttonsDiv.querySelector("#btn").style.display = "none";
   startBtn.addEventListener("click", startTheGame);
@@ -129,7 +133,6 @@ function stay() {
 function doubleDown() {
   if((bet*2) < playerChips) {
     removeBtnEventListeners();
-    doubleDownCheck = true;
     playerChips -= bet;
     bet = bet*2;
     playerChipsDiv.textContent = playerChips;
@@ -179,23 +182,6 @@ function checkWin() {
     resetGame();
     startGameDiv.querySelector("p").textContent = "Busted";
   }
-}
-
-function aceWorth1() {
-  aceWorth(1);
-}
-function aceWorth11() {
-  aceWorth(11);
-}
-
-function aceWorth(cardValue) {
-  aceButtons.querySelector("#ace1Btn").removeEventListener("click", aceWorth1);
-  aceButtons.querySelector("#ace11Btn").removeEventListener("click", aceWorth11);
-  total += cardValue;
-  playerScore.textContent = total;
-  buttonsDiv.querySelector("#btn").style.display = "inline";
-  aceButtons.style.display = "none";
-  checkWin();
 }
 
 function addBtnEventListeners() {

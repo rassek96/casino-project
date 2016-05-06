@@ -94,6 +94,7 @@
   top: -20px;
   left: 50%;
   transform: translate(-50%, -50%);
+  pointer-events: none;
 }
 #startGame {
   position: absolute;
@@ -108,10 +109,13 @@
   width: 45px;
   height: 25px;
   background-color: whitesmoke;
+  cursor: pointer;
 }
 #startGame p {
   font-size: 20px;
   color: whitesmoke;
+  pointer-events: none;
+
 }
 #buttons, #aceButtons {
   width: 500px;
@@ -134,6 +138,7 @@
   border: 3px groove whitesmoke;
   border-top: none;
   margin: 12px;
+  cursor: pointer;
 }
 #hitBtn, #stayBtn, #doubleDownBtn, #surrenderBtn {
   float: left;
@@ -162,4 +167,5 @@
   width: 150px;
   text-align: left;
   bottom: 0px;
+  pointer-events: none;
 }

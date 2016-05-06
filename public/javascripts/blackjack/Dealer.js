@@ -33,10 +33,6 @@ Dealer.prototype.hit = function() {
     if(cardValue === 11 || cardValue === 12 || cardValue === 13) {
       cardValue = 10;
     }
-    /*if(total !== 0) {
-      var cardImg = dealerCardBox.querySelector("img");
-      dealerCardBox.removeChild(cardImg);
-    }*/
     var cardImg = document.createElement("img");
     cardImg.setAttribute("src", "/images/carddeck/" + card + ".png");
     cardImg.setAttribute("class", "cardImg");
@@ -48,7 +44,6 @@ Dealer.prototype.hit = function() {
       .add("top", 13)
       .rotate(180)
       .end();
-    //dealerCardBox.appendChild(cardImg);
 
     if(cardValue === 1) {
       if(total === 10 || !(total + 11 > 21) || ( !(total + 11 > 21) && (total + 11 > playerTotal)) ) {
