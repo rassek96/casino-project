@@ -21,7 +21,7 @@ module.exports = function () {
   // session config
   var session = expressSession({
     name: "serverSession",
-    secret: randomString.randomString(38),
+    secret: "LrzLptKvFnMFvoJxyLDIoGJEHKwoEtwK1uwILx",
     resave: true,
     saveUninitialized: true
   });
@@ -41,7 +41,6 @@ module.exports = function () {
   app.use(function(request, response, next) {
     if (!request.session.csrfToken) {
         var string = randomString.randomString(38);
-        console.log(string);
         request.session.csrfToken = string;
     }
     response.locals.csrfToken = request.session.csrfToken;
