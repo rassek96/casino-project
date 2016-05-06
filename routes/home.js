@@ -18,9 +18,14 @@ router.route("/home")
         }
     })
     .post(function(request, response) {
-        request.session.username = request.body.nameText;
-        request.session.chips = 50;
-        response.redirect("/home");
+        if(request.body.csrfToken === request.session.csrfToken) {
+          request.session.username = request.body.nameText;
+          request.session.chips = 50;
+          response.redirect("/home");
+        } else {
+          response.status(403);
+          response.send("Error 403 - Forbidden");
+        }
     });
 
 module.exports = router;

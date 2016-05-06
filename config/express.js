@@ -6,6 +6,8 @@ var bodyParser = require("body-parser");
 var expressSession    = require("express-session");
 var sharedSession = require("express-socket.io-session");
 
+var randomString = require("./randomString");
+
 module.exports = function () {
   // Server configurations
   var app = express();
@@ -19,7 +21,7 @@ module.exports = function () {
   // session config
   var session = expressSession({
     name: "serverSession",
-    secret: "5sadgasdkfh32r32f78",
+    secret: randomString.randomString(38),
     resave: true,
     saveUninitialized: true
   });
@@ -35,6 +37,15 @@ module.exports = function () {
 
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json());
+
+  app.use(function(request, response, next) {
+    if (!request.session.csrfToken) {
+        var string = randomString.randomString(38);
+        request.session.csrfToken = string;
+    }
+    response.locals.csrfToken = request.session.csrfToken;
+    next();
+});
 
   var server = app.listen(port, function() {
     console.log("Express server started on http://localhost:" + port);
