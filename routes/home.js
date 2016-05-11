@@ -19,10 +19,13 @@ router.route("/home")
               var data = [];
               //TODO htmlescape
               for (var i = 0; i < 5; i += 1) {
-                data.push({id: i, username: highscores[i].username, score: highscores[i].score});
+                if(highscores[i]) {
+                  data.push({id: i, username: highscores[i].username, score: highscores[i].score});
+                }
               }
               data = sortByKey(data, "score");
-              for (var i = 0; i < 5; i += 1) {
+              for (var i = 0; i < data.length; i += 1) {
+
                 data[i].id = i+1;
               }
               response.render("home", {data: data});
