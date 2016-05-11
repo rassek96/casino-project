@@ -11,26 +11,27 @@ router.route("/")
 
 router.route("/home")
     .get(function(request, response) {
-        if(request.session.username) {
-            Highscore.find(function(error, highscores) {
-              if(error) {
-                return;
-              }
-              var data = [];
-              //TODO htmlescape
-              for (var i = 0; i < 5; i += 1) {
-                data.push({id: i, username: highscores[i].username, score: highscores[i].score});
-              }
-              data = sortByKey(data, "score");
-              for (var i = 0; i < 5; i += 1) {
-                data[i].id = i+1;
-              }
-              response.render("home", {data: data});
-            });
+      Highscore.find(function(error, highscores) {
+        if(error) {
+          return;
+        }
+        var data = [];
+        //TODO htmlescape
+        for (var i = 0; i < 5; i += 1) {
+          data.push({id: i, username: highscores[i].username, score: highscores[i].score});
+        }
+        data = sortByKey(data, "score");
+        for (var i = 0; i < 5; i += 1) {
+          data[i].id = i+1;
+        }
+        response.render("home", {data: data});
+      });
+        /*if(request.session.username) {
+
         }
         else {
             response.redirect("/");
-        }
+        }*/
     })
     .post(function(request, response) {
         if(request.body.csrfToken === request.session.csrfToken) {
