@@ -21,40 +21,31 @@
                   <th>Name</th>
                   <th>Chips</th>
                 </tr>
-                <tr>
-                  <td>1</td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td></td>
-                  <td></td>
-                </tr>
+                {{#each data}}
+                  <tr>
+                    <td>{{{this.id}}}</td>
+                    <td>{{{this.username}}}</td>
+                    <td>{{{this.score}}}</td>
+                  </tr>
+                {{/each}}
             </table>
+            <div id="checkoutDiv"><u>Checkout</u></div>
         </div>
     </div>
 </div>
-
+<div id="coverDiv">
+  <div id="checkoutBox">
+    <h2>Checkout from the casino?</h2>
+    <p>This will end your game and your chips will be counted towards the highscore.</p>
+    <div class="coverDivLink"><a href="/checkout">Checkout</a></div>
+    <div class="coverDivLink"><u>Keep playing</u></div>
+  </div>
+</div>
 <footer>
-  <a href="/">Checkout</a>
   <a href="/about">About</a>
   <a href="/faq">FAQ</a>
   <a href="/contact">Contact</a>
   <a href="/credit">Credit</a>
 </footer>
+
+<script src="/javascripts/home.js"></script>

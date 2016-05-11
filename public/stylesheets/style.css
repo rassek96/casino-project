@@ -25,7 +25,6 @@ body {
     font-size: 44px;
     height: 100%;
     width: 100%;
-    display: block;
     opacity: 0.6;
     color: white;
 }
@@ -61,6 +60,17 @@ body {
     float: right;
     text-align: center;
 }
+#checkoutDiv {
+  padding: 5px;
+  color: rgb(40,40,40);
+  font-size: 18px;
+  cursor: pointer;
+  width: fit-content;
+  margin: auto;
+}
+#checkoutDiv:hover {
+  color: whitesmoke;
+}
 #slotDiv, #blackjackDiv, #wheelDiv {
     width: 100%;
     background-color: seagreen;
@@ -75,7 +85,7 @@ body {
 }
 
 #slotDiv:hover, #blackjackDiv:hover, #wheelDiv:hover {
-    background:rgba(255,255,255,0.8);
+    background:rgba(255,255,255,0.6);
 }
 #slotDiv img, #blackjackDiv img, #wheelDiv img {
     width: 100%;
@@ -127,4 +137,40 @@ footer a {
 }
 footer a:hover {
   color: whitesmoke;
+}
+
+#checkoutBox {
+  position: absolute;
+  background-color: whitesmoke;
+  width: 65%;
+  max-width: 800px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  text-align: center;
+}
+.coverDivLink {
+  margin: 18px;
+  color: black;
+  width: 40%;
+  display: inline-block;
+  background-color: seagreen;
+  cursor: pointer;
+  padding-bottom: 2px;
+}
+.coverDivLink:hover {
+  background-color: gray;
+}
+.coverDivLink a {
+  color: black;
+  display: block;
+}
+#coverDiv {
+  height: 100%;
+  width: 100%;
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
 }

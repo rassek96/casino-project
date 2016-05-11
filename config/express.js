@@ -62,6 +62,7 @@ module.exports = function () {
   app.use("/", require("../routes/home.js"));
   app.use("/", require("../routes/slotmachine.js"));
   app.use("/", require("../routes/blackjack.js"));
+  app.use("/", require("../routes/checkout.js"));
 
   app.use(express.static("public"));
 
