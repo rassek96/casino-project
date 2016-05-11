@@ -4,6 +4,8 @@ var router  = require("express").Router();
 var session = require("express-session");
 var Highscore = require("../config/db/Highscore");
 
+var htmlEscape = require("../public/javascripts/htmlEscape");
+
 router.route("/")
     .get(function(request, response) {
         response.render("firstPage");
@@ -20,7 +22,8 @@ router.route("/home")
               //TODO htmlescape
               for (var i = 0; i < 5; i += 1) {
                 if(highscores[i]) {
-                  data.push({id: i, username: highscores[i].username, score: highscores[i].score});
+                  var escapedUsername = htmlEscape.htmlEscape(highscores[i].username);
+                  data.push({id: i, username: escapedUsername, score: highscores[i].score});
                 }
               }
               data = sortByKey(data, "score");

@@ -130,16 +130,17 @@ footer {
   line-height: 60px;
   font-size: 18px;
 }
-footer a {
+footer p {
   display: inline;
   margin: 2%;
   color: rgb(50,50,50);
+  cursor: pointer;
 }
-footer a:hover {
+footer p:hover {
   color: whitesmoke;
 }
 
-#checkoutBox {
+#checkoutBox, #aboutBox, #contactBox, #creditBox {
   position: absolute;
   background-color: whitesmoke;
   width: 65%;
