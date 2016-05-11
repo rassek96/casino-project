@@ -3,7 +3,7 @@
 var mongoose = require("mongoose");
 
 module.exports = function() {
-  var db = mongoose.connect("mongodb://raskarl/test");
+  var db = mongoose.connect("mongodb://46.101.133.185/test");
 
   db.connection.on("connected", function() {
     console.log("connected to database");
