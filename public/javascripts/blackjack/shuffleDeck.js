@@ -21,34 +21,26 @@ module.exports = function () {
 var deckCardImg = document.querySelectorAll(".deckCard");
 var i = 0;
 function shuffleAnimation() {
-  move(deckCardImg[0]).y(150).end();
-  move(deckCardImg[1]).y(150).end();
-  move(deckCardImg[2]).y(150).end();
-  move(deckCardImg[3]).y(150).end();
-  move(deckCardImg[4]).y(150).end();
-  move(deckCardImg[5]).y(150).end(function() {
-    move(deckCardImg[0]).y(300).end();
-    move(deckCardImg[1]).y(300).delay("0.3s").end();
-    move(deckCardImg[2]).y(300).delay("0.6s").end();
-    move(deckCardImg[3]).y(300).delay("0.9s").end();
-    move(deckCardImg[4]).y(300).delay("1.2s").end();
-    move(deckCardImg[5]).y(300).delay("1.5s").end();
-
-    setTimeout(function() {
-      move(deckCardImg[0]).y(150).end();
-      move(deckCardImg[1]).y(150).delay("0.2s").end();
-      move(deckCardImg[2]).y(150).delay("0.4s").end();
-      move(deckCardImg[3]).y(150).delay("0.6s").end();
-      move(deckCardImg[4]).y(150).delay("0.8s").end();
-      move(deckCardImg[5]).y(150).delay("1s").end(function() {
-        move(deckCardImg[0]).y(0).end();
-        move(deckCardImg[1]).y(0).end();
-        move(deckCardImg[2]).y(0).end();
-        move(deckCardImg[3]).y(0).end();
-        move(deckCardImg[4]).y(0).end();
-        move(deckCardImg[5]).y(0).end();
-      });
-    }, 1501);
+  move(deckCardImg[0]).y(150).end(function() {
+    move(deckCardImg[0]).y(0).set("z-index", Math.floor(Math.random()*7) + 1).delay("0.6s").end();
+  });
+  move(deckCardImg[1]).y(150).delay("0.2s").end(function() {
+    move(deckCardImg[1]).y(0).set("z-index", Math.floor(Math.random()*7) + 1).delay("0.6s").end();
+  });
+  move(deckCardImg[2]).y(150).delay("0.4s").end(function() {
+    move(deckCardImg[2]).y(0).set("z-index", Math.floor(Math.random()*7) + 1).delay("0.6s").end();
+  });
+  move(deckCardImg[3]).y(150).delay("0.6s").end(function() {
+    move(deckCardImg[3]).y(0).set("z-index", Math.floor(Math.random()*7) + 1).delay("0.6s").end();
+  });
+  move(deckCardImg[4]).y(150).delay("0.8s").end(function() {
+    move(deckCardImg[4]).y(0).set("z-index", Math.floor(Math.random()*7) + 1).delay("0.6s").end();
+  });
+  move(deckCardImg[5]).y(150).delay("1s").end(function() {
+    move(deckCardImg[5]).y(0).set("z-index", Math.floor(Math.random()*7) + 1).delay("0.6s").end();
+  });
+  move(deckCardImg[6]).y(150).delay("1.2s").end(function() {
+    move(deckCardImg[6]).y(0).set("z-index", Math.floor(Math.random()*7) + 1).delay("0.6s").end();
   });
 }
 

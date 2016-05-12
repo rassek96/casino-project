@@ -59,7 +59,7 @@ function startTheGame() {
   shuffledDeck = shuffleDeck();
   setTimeout(function() {
     hit();
-  }, 6500);
+  }, 3200);
 }
 
 function hit() {
@@ -74,6 +74,27 @@ function hit() {
     cardValue = 10;
   }
 
+  if(aceCheck === true) {
+    if(cardCount === 1) {
+      total += 11;
+    } else if((total + 11) < 11 && (total + 11) > 7) {
+      total += 11;
+    } else {
+      total += 1;
+    }
+  }
+  if(cardValue === 1) {
+    if(total + 11 === 21) {
+      cardValue = 11;
+    } else {
+      aceCheck = true;
+      cardValue = 0;
+    }
+  } else {
+    aceCheck = false;
+  }
+  total += cardValue;
+
   var cardImg = document.createElement("img");
   cardImg.setAttribute("src", "/images/carddeck/" + card + ".png");
   cardImg.setAttribute("class", "cardImg");
@@ -81,28 +102,14 @@ function hit() {
   var pixels = playerCardBox.offsetTop;
   var moveCard = document.querySelectorAll(".cardImg");
   move(moveCard[cardCount])
-    .add("top", (pixels-36))
-    .add("left", 2)
-    .rotate(180)
-    .end();
+    .add("top", (pixels-Math.floor(Math.random()* ((38-34)+1) + 34)))
+    .add("left", Math.floor(Math.random()* ((0-4)+1) + 4))
+    .rotate(Math.floor(Math.random()* ((182-178)+1) + 178))
+    .end(function() {
+      playerScore.textContent = total;
+      checkWin();
+    });
 
-  if(aceCheck === true) {
-    if((total + 11) < 11 && (total + 11) > 7) {
-      total += 11;
-    } else {
-      total += 1;
-    }
-  }
-  if(cardValue === 1) {
-    aceCheck = true;
-    cardValue = 0;
-  } else {
-    aceCheck = false;
-  }
-
-  total += cardValue;
-  playerScore.textContent = total;
-  checkWin();
   cardCount += 1;
   if(cardCount === 1) {
     setTimeout(function() {
@@ -233,18 +240,6 @@ Dealer.prototype.hit = function() {
     if(cardValue === 11 || cardValue === 12 || cardValue === 13) {
       cardValue = 10;
     }
-    var cardImg = document.createElement("img");
-    cardImg.setAttribute("src", "/images/carddeck/" + card + ".png");
-    cardImg.setAttribute("class", "cardImg");
-    document.querySelector("#dealerDeckBox").appendChild(cardImg);
-    var pixels = dealerCardBox.offsetLeft;
-    var moveCard = document.querySelectorAll(".cardImg");
-    move(moveCard[cardCount])
-      .add("left", -167)
-      .add("top", 13)
-      .rotate(180)
-      .end();
-
     if(cardValue === 1) {
       if(total === 10 || !(total + 11 > 21) || ( !(total + 11 > 21) && (total + 11 > playerTotal)) ) {
         cardValue = 11;
@@ -252,9 +247,25 @@ Dealer.prototype.hit = function() {
         cardValue = 1;
       }
     }
+
     total += cardValue;
+    var cardImg = document.createElement("img");
+    cardImg.setAttribute("src", "/images/carddeck/" + card + ".png");
+    cardImg.setAttribute("class", "cardImg");
+    document.querySelector("#dealerDeckBox").appendChild(cardImg);
+    var pixels = dealerCardBox.offsetLeft;
+    var moveCard = document.querySelectorAll(".cardImg");
+    move(moveCard[cardCount])
+      .add("left", Math.floor(Math.random()* (-165-(-169)) + (-169)))
+      .add("top", Math.floor(Math.random()* ((11-15)+1) + 15))
+      .rotate(Math.floor(Math.random()* ((182-178)+1) + 178))
+      .end(function() {
+        dealerScore.textContent = total;
+      });
+
+
     cardCount += 1;
-    dealerScore.textContent = total;
+
     if (total > 21) {
       clearInterval(hitInterval);
       playerChips += (bet * 2);
@@ -314,34 +325,26 @@ module.exports = function () {
 var deckCardImg = document.querySelectorAll(".deckCard");
 var i = 0;
 function shuffleAnimation() {
-  move(deckCardImg[0]).y(150).end();
-  move(deckCardImg[1]).y(150).end();
-  move(deckCardImg[2]).y(150).end();
-  move(deckCardImg[3]).y(150).end();
-  move(deckCardImg[4]).y(150).end();
-  move(deckCardImg[5]).y(150).end(function() {
-    move(deckCardImg[0]).y(300).end();
-    move(deckCardImg[1]).y(300).delay("0.3s").end();
-    move(deckCardImg[2]).y(300).delay("0.6s").end();
-    move(deckCardImg[3]).y(300).delay("0.9s").end();
-    move(deckCardImg[4]).y(300).delay("1.2s").end();
-    move(deckCardImg[5]).y(300).delay("1.5s").end();
-
-    setTimeout(function() {
-      move(deckCardImg[0]).y(150).end();
-      move(deckCardImg[1]).y(150).delay("0.2s").end();
-      move(deckCardImg[2]).y(150).delay("0.4s").end();
-      move(deckCardImg[3]).y(150).delay("0.6s").end();
-      move(deckCardImg[4]).y(150).delay("0.8s").end();
-      move(deckCardImg[5]).y(150).delay("1s").end(function() {
-        move(deckCardImg[0]).y(0).end();
-        move(deckCardImg[1]).y(0).end();
-        move(deckCardImg[2]).y(0).end();
-        move(deckCardImg[3]).y(0).end();
-        move(deckCardImg[4]).y(0).end();
-        move(deckCardImg[5]).y(0).end();
-      });
-    }, 1501);
+  move(deckCardImg[0]).y(150).end(function() {
+    move(deckCardImg[0]).y(0).set("z-index", Math.floor(Math.random()*7) + 1).delay("0.6s").end();
+  });
+  move(deckCardImg[1]).y(150).delay("0.2s").end(function() {
+    move(deckCardImg[1]).y(0).set("z-index", Math.floor(Math.random()*7) + 1).delay("0.6s").end();
+  });
+  move(deckCardImg[2]).y(150).delay("0.4s").end(function() {
+    move(deckCardImg[2]).y(0).set("z-index", Math.floor(Math.random()*7) + 1).delay("0.6s").end();
+  });
+  move(deckCardImg[3]).y(150).delay("0.6s").end(function() {
+    move(deckCardImg[3]).y(0).set("z-index", Math.floor(Math.random()*7) + 1).delay("0.6s").end();
+  });
+  move(deckCardImg[4]).y(150).delay("0.8s").end(function() {
+    move(deckCardImg[4]).y(0).set("z-index", Math.floor(Math.random()*7) + 1).delay("0.6s").end();
+  });
+  move(deckCardImg[5]).y(150).delay("1s").end(function() {
+    move(deckCardImg[5]).y(0).set("z-index", Math.floor(Math.random()*7) + 1).delay("0.6s").end();
+  });
+  move(deckCardImg[6]).y(150).delay("1.2s").end(function() {
+    move(deckCardImg[6]).y(0).set("z-index", Math.floor(Math.random()*7) + 1).delay("0.6s").end();
   });
 }
 

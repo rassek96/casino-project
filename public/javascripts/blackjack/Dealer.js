@@ -33,18 +33,6 @@ Dealer.prototype.hit = function() {
     if(cardValue === 11 || cardValue === 12 || cardValue === 13) {
       cardValue = 10;
     }
-    var cardImg = document.createElement("img");
-    cardImg.setAttribute("src", "/images/carddeck/" + card + ".png");
-    cardImg.setAttribute("class", "cardImg");
-    document.querySelector("#dealerDeckBox").appendChild(cardImg);
-    var pixels = dealerCardBox.offsetLeft;
-    var moveCard = document.querySelectorAll(".cardImg");
-    move(moveCard[cardCount])
-      .add("left", -167)
-      .add("top", 13)
-      .rotate(180)
-      .end();
-
     if(cardValue === 1) {
       if(total === 10 || !(total + 11 > 21) || ( !(total + 11 > 21) && (total + 11 > playerTotal)) ) {
         cardValue = 11;
@@ -52,9 +40,25 @@ Dealer.prototype.hit = function() {
         cardValue = 1;
       }
     }
+
     total += cardValue;
+    var cardImg = document.createElement("img");
+    cardImg.setAttribute("src", "/images/carddeck/" + card + ".png");
+    cardImg.setAttribute("class", "cardImg");
+    document.querySelector("#dealerDeckBox").appendChild(cardImg);
+    var pixels = dealerCardBox.offsetLeft;
+    var moveCard = document.querySelectorAll(".cardImg");
+    move(moveCard[cardCount])
+      .add("left", Math.floor(Math.random()* (-165-(-169)) + (-169)))
+      .add("top", Math.floor(Math.random()* ((11-15)+1) + 15))
+      .rotate(Math.floor(Math.random()* ((182-178)+1) + 178))
+      .end(function() {
+        dealerScore.textContent = total;
+      });
+
+
     cardCount += 1;
-    dealerScore.textContent = total;
+
     if (total > 21) {
       clearInterval(hitInterval);
       playerChips += (bet * 2);

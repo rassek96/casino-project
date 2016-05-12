@@ -58,7 +58,7 @@ function startTheGame() {
   shuffledDeck = shuffleDeck();
   setTimeout(function() {
     hit();
-  }, 6500);
+  }, 3200);
 }
 
 function hit() {
@@ -73,21 +73,9 @@ function hit() {
     cardValue = 10;
   }
 
-  var cardImg = document.createElement("img");
-  cardImg.setAttribute("src", "/images/carddeck/" + card + ".png");
-  cardImg.setAttribute("class", "cardImg");
-  document.querySelector("#dealerDeckBox").appendChild(cardImg);
-  var pixels = playerCardBox.offsetTop;
-  var moveCard = document.querySelectorAll(".cardImg");
-  move(moveCard[cardCount])
-    .add("top", (pixels-36))
-    .add("left", 2)
-    .rotate(180)
-    .end();
-
   if(aceCheck === true) {
     if(cardCount === 1) {
-
+      total += 11;
     } else if((total + 11) < 11 && (total + 11) > 7) {
       total += 11;
     } else {
@@ -95,15 +83,32 @@ function hit() {
     }
   }
   if(cardValue === 1) {
-    aceCheck = true;
-    cardValue = 0;
+    if(total + 11 === 21) {
+      cardValue = 11;
+    } else {
+      aceCheck = true;
+      cardValue = 0;
+    }
   } else {
     aceCheck = false;
   }
-
   total += cardValue;
-  playerScore.textContent = total;
-  checkWin();
+
+  var cardImg = document.createElement("img");
+  cardImg.setAttribute("src", "/images/carddeck/" + card + ".png");
+  cardImg.setAttribute("class", "cardImg");
+  document.querySelector("#dealerDeckBox").appendChild(cardImg);
+  var pixels = playerCardBox.offsetTop;
+  var moveCard = document.querySelectorAll(".cardImg");
+  move(moveCard[cardCount])
+    .add("top", (pixels-Math.floor(Math.random()* ((38-34)+1) + 34)))
+    .add("left", Math.floor(Math.random()* ((0-4)+1) + 4))
+    .rotate(Math.floor(Math.random()* ((182-178)+1) + 178))
+    .end(function() {
+      playerScore.textContent = total;
+      checkWin();
+    });
+
   cardCount += 1;
   if(cardCount === 1) {
     setTimeout(function() {
