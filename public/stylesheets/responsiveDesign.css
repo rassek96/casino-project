@@ -1,6 +1,6 @@
 @media only screen and (max-width: 480px) {
   #frontImage, #userDiv span:nth-of-type(1), #checkoutBox, #aboutBox, #contactBox, #creditBox, footer, #coverDiv, #checkoutDiv {
-    display: none;
+    display: none !important;
   }
   #gamesDiv {
     width: 96%;
