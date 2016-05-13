@@ -1,14 +1,5 @@
 @media only screen and (max-width: 480px) {
-  #firstPageContent h2{
-      font-size: 45px;
-  }
-  #firstPageContent {
-      font-size: 30px;
-  }
-  #firstPageContent input {
-      width: 70%;
-  }
-  #frontImage, #userDiv span:nth-of-type(1) {
+  #frontImage, #userDiv span:nth-of-type(1), #checkoutBox, #aboutBox, #contactBox, #creditBox, footer, #coverDiv, #checkoutDiv {
     display: none;
   }
   #gamesDiv {
@@ -20,8 +11,5 @@
   }
   #slotDiv, #blackjackDiv {
     margin-bottom: 1%;
-  }
-  #checkoutBox, #aboutBox, #contactBox, #creditBox {
-    width: 95%;
   }
 }
