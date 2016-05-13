@@ -12,4 +12,7 @@
   #slotDiv, #blackjackDiv {
     margin-bottom: 1%;
   }
+  #highscores {
+    margin-bottom: 20px;
+  }
 }
