@@ -60,7 +60,7 @@ body {
     float: right;
     text-align: center;
 }
-#checkoutDiv {
+#checkoutDiv, #checkoutDivResponsive {
   padding: 5px;
   color: rgb(40,40,40);
   font-size: 18px;
@@ -68,7 +68,10 @@ body {
   width: fit-content;
   margin: auto;
 }
-#checkoutDiv:hover {
+#checkoutDivResponsive {
+  display: none;
+}
+#checkoutDiv:hover, #checkoutDivResponsive:hover {
   color: whitesmoke;
 }
 #slotDiv, #blackjackDiv, #wheelDiv {

@@ -20,4 +20,7 @@
   #highscores {
     margin-bottom: 20px;
   }
+  #checkoutDivResponsive {
+    display: block;
+  }
 }
