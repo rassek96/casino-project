@@ -69,10 +69,12 @@ body {
   margin: auto;
 }
 #checkoutDivResponsive {
-  top: -9999px;
-  left: -9999px;
+  display: none !important;
 }
-#checkoutDiv:hover, #checkoutDivResponsive:hover {
+#checkoutDivResponsive a {
+  color: rgb(40,40,40);
+}
+#checkoutDiv:hover, #checkoutDivResponsive a:hover {
   color: whitesmoke;
 }
 #slotDiv, #blackjackDiv, #wheelDiv {

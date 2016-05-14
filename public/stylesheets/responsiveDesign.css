@@ -21,7 +21,6 @@
     margin-bottom: 20px;
   }
   #checkoutDivResponsive {
-    top: 0;
-    left: 0;
+    display: block !important;
   }
 }
