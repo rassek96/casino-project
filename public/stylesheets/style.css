@@ -69,7 +69,8 @@ body {
   margin: auto;
 }
 #checkoutDivResponsive {
-  display: none;
+  top: -9999px;
+  left: -9999px;
 }
 #checkoutDiv:hover, #checkoutDivResponsive:hover {
   color: whitesmoke;
