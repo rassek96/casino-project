@@ -24,3 +24,31 @@
     display: block !important;
   }
 }
+/*
+@media only screen and (max-width: 720px) {
+  #gamesDiv {
+    width: 99%;
+  }
+  #gamesDiv span {
+    display: none !important;
+    position: absolute;
+    top: -9999px !important;
+    left: -9999px !important;
+  }
+  #userDiv {
+    width: 98%;
+    margin: 0;
+    float: none;
+    margin-bottom: 5px;
+    margin: auto;
+  }
+  #slotDiv, #blackjackDiv {
+    margin-bottom: 1%;
+    width: 47%;
+  }
+  #blackjackDiv {
+    float: right;
+    margin-right: 1%
+  }
+}
+*/

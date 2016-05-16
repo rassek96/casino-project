@@ -5,22 +5,22 @@ var session = require("express-session");
 var Highscore = require("../config/db/Highscore");
 
 router.route("/checkout")
-    .get(function(request, response) {
-        if(request.session.username) {
+    .post(function(request, response) {
+        if(request.body.csrfToken === request.session.csrfToken) {
           var highscore = new Highscore({
-            username: request.session.username,
+            username: request.body.nameText,
             score: request.session.chips
           });
           highscore.save(function(error) {
             if(error) {
-              console.log(error);
               return;
             }
+            request.session.destroy();
             response.redirect("/");
           });
-        }
-        else {
-          response.redirect("/");
+        } else {
+          response.status(403);
+          response.send("Error 403 - Forbidden");
         }
     });
 

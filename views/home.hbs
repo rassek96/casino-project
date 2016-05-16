@@ -38,8 +38,13 @@
   <div id="checkoutBox">
     <h2>Checkout from the casino?</h2>
     <p>This will end your game and your chips will be counted towards the highscore.</p>
-    <div class="coverDivLink"><a href="/checkout">Checkout</a></div>
-    <div class="coverDivLink"><u>Back</u></div>
+    <form action="/checkout" method="post">
+        Name: <br>
+        <input type="text" name="nameText"><br>
+        <button class="coverDivLink"><u><b>Checkout</b></u></button>
+        <div class="coverDivLink"><u>Back</u></div>
+        <input type="hidden" name="csrfToken" value="{{csrfToken}}">
+    </form>
   </div>
   <div id="aboutBox">
     <h2>About</h2>

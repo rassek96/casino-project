@@ -79,23 +79,23 @@
     pointer-events: none;
 }
 #spinBtn {
-  background-color: white;
-  border: 6px gray groove;
-  color: black;
-  opacity: 0.9;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 5px;
-  font-size: 20px;
+  width: 100px;
   height: 60px;
-  width: 122px;
+  padding: 1px;
+  font-size: 20px;
+  margin: 7px;
   cursor: pointer;
-  margin-top: 10px;
+  background-color: #3e8e41;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px #999;
 }
 #spinBtn:active {
-  border: 8px gray groove;
-  font-size: 19px;
+  background-color: #3a9941;
+  box-shadow: 0 5px #666;
+  transform: translateY(1px);
 }
 #btnBoard {
     width: 90%;

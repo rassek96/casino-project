@@ -131,35 +131,26 @@
   top: -12px;
 }
 #hitBtn, #stayBtn, #doubleDownBtn, #surrenderBtn, #startBtn, #ace1Btn, #ace11Btn {
-  border: none;
   width: 100px;
   height: 60px;
   padding: 1px;
   font-size: 20px;
-  border: 3px groove whitesmoke;
-  border-top: none;
   margin: 12px;
   cursor: pointer;
+  background-color: #4CAF50;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px #999;
 }
 #hitBtn, #stayBtn, #doubleDownBtn, #surrenderBtn {
   float: left;
 }
 #hitBtn:active, #stayBtn:active, #doubleDownBtn:active, #surrenderBtn:active, #startBtn:active, #ace1Btn:active, #ace11Btn:active {
-  border: 5px groove whitesmoke;
-  background-color: white;
-  font-size: 19px;
-}
-#hitBtn {
-  border-left: none;
-}
-#stayBtn {
-  border-left: none;
-}
-#doubleDownBtn {
-  border-right: none;
-}
-#surrenderBtn {
-  border-right: none;
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 #playerChips {
   position: absolute;

@@ -30,7 +30,12 @@ module.exports = function () {
   app.set("view engine", "hbs");
 
   app.use(function(request, response, next) {
-    response.locals.username = request.session.username;
+    if((!request.session.chips) || request.session.chips === null) {
+      request.session.chips = 50;
+    }
+    next();
+  });
+  app.use(function(request, response, next) {
     response.locals.chips = request.session.chips;
     next();
   });

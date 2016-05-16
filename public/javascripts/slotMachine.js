@@ -12,7 +12,7 @@ spinBtn.addEventListener("click", rollSlots);
 function rollSlots() {
   if(chips > 0) {
     spinBtn.removeEventListener("click", rollSlots);
-    spinBtn.style.backgroundColor = "#e6e600";
+    spinBtn.style.backgroundColor = "#317134";
     chips -= 1;
     socket.emit("changeChips", {chips: chips});
     document.querySelector("#scoreChips").querySelector("span").textContent = chips.toString();
@@ -42,9 +42,9 @@ function reelAnimation(i, numberStop) {
             slotReel[i].setAttribute("value", numberStop);
             if (i === 2) {
                 checkWin();
-                spinBtn.style.backgroundColor = "white";
                 setTimeout(function() {
                   spinBtn.addEventListener("click", rollSlots);
+                  spinBtn.style.backgroundColor = "#3e8e41";
                 }, 500);
             }
         } else {

@@ -165,6 +165,9 @@ footer p:hover {
   background-color: seagreen;
   cursor: pointer;
   padding-bottom: 2px;
+  border: none;
+  font-size: 16px;
+  font-family: "Arial Black", Gadget, sans-serif;
 }
 .coverDivLink:hover {
   background-color: gray;
