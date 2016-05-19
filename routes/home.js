@@ -5,11 +5,6 @@ var session = require("express-session");
 var Highscore = require("../config/db/Highscore");
 
 var htmlEscape = require("../public/javascripts/htmlEscape");
-/*
-router.route("/")
-    .get(function(request, response) {
-        response.render("firstPage");
-    });*/
 
 router.route("/")
     .get(function(request, response) {
@@ -33,17 +28,6 @@ router.route("/")
         response.render("home", {data: data});
       });
     });
-    /*
-    .post(function(request, response) {
-        if(request.body.csrfToken === request.session.csrfToken) {
-          request.session.username = request.body.nameText;
-          request.session.chips = 50;
-          response.redirect("/home");
-        } else {
-          response.status(403);
-          response.send("Error 403 - Forbidden");
-        }
-    });*/
 
 function sortByKey(array, key) {
   return array.sort(function(a, b) {

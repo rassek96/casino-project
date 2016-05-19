@@ -5,6 +5,7 @@ var socket = io();
 var Dealer = require("./blackjack/Dealer");
 var checkWinjs = require("./blackjack/checkWin");
 var shuffleDeck = require("./blackjack/shuffleDeck");
+var shuffleAnimation = require("./blackjack/shuffleAnimation");
 
 var textContent = document.querySelector("#textContent");
 var hitBtn = document.querySelector("#hitBtn");
@@ -32,11 +33,14 @@ var aceCheck;
 startBtn.addEventListener("click", startTheGame);
 
 function startTheGame() {
+  var staySound = new Audio("../sounds/blackjack_select.wav");
+  staySound.play();
   startBtn.removeEventListener("click", startTheGame);
   startGameDiv.style.display = "none";
   buttonsDiv.style.display = "inline";
   buttonsDiv.querySelector("#btn").style.display = "inline";
   doubleDownBtn.style.visibility = "visible";
+  surrenderBtn.style.visibility = "visible";
   document.querySelector("#dealerScore").textContent = 0;
 
   if(dealerCardBox.querySelector("img") !== null) {
@@ -57,6 +61,7 @@ function startTheGame() {
   gamesPlayed += 1;
   aceCheck = false;
   shuffledDeck = shuffleDeck();
+  shuffleAnimation();
   setTimeout(function() {
     hit();
   }, 3200);
@@ -65,6 +70,11 @@ function startTheGame() {
 function hit() {
   if(cardCount > 1) {
     doubleDownBtn.style.visibility = "hidden";
+    surrenderBtn.style.visibility = "hidden";
+  }
+  if(cardCount > 1) {
+    var hitSound = new Audio("../sounds/blackjack_hit.wav");
+    hitSound.play();
   }
   var card = shuffledDeck[cardCount];
   //Add cardvalue to total sum
@@ -110,6 +120,8 @@ function hit() {
       checkWin();
     });
 
+  var dealSound = new Audio("../sounds/blackjack_deal.wav");
+  dealSound.play();
   cardCount += 1;
   if(cardCount === 1) {
     setTimeout(function() {
@@ -120,6 +132,8 @@ function hit() {
 }
 
 function stay() {
+  var staySound = new Audio("../sounds/blackjack_select.wav");
+  staySound.play();
   removeBtnEventListeners();
   if(aceCheck === true) {
     if((total + 11) < 22) {
@@ -137,6 +151,8 @@ function stay() {
 }
 
 function doubleDown() {
+  var staySound = new Audio("../sounds/blackjack_select.wav");
+  staySound.play();
   if((bet*2) < playerChips) {
     removeBtnEventListeners();
     playerChips -= bet;
@@ -151,6 +167,8 @@ function doubleDown() {
 }
 
 function surrender() {
+  var staySound = new Audio("../sounds/blackjack_select.wav");
+  staySound.play();
   playerChips += Math.floor(bet/2);
   playerChipsDiv.textContent = playerChips;
   socket.emit("changeChips", {chips: playerChips});
@@ -179,11 +197,16 @@ function betFoo() {
 
 function checkWin() {
   if(checkWinjs(total) === true) {
-    playerChips += (bet * 2);
+    if(cardCount === 2) {
+      playerChips += (Math.floor(bet*2.5));
+      startGameDiv.querySelector("p").textContent = "Winner - Blackjack!";
+    } else {
+      playerChips += (bet * 2);
+      startGameDiv.querySelector("p").textContent = "Winner";
+    }
     playerChipsDiv.textContent = playerChips;
     socket.emit("changeChips", {chips: playerChips});
     resetGame();
-    startGameDiv.querySelector("p").textContent = "Winner";
   } else if(checkWinjs(total) === false){
     resetGame();
     startGameDiv.querySelector("p").textContent = "Busted";
@@ -204,7 +227,7 @@ function removeBtnEventListeners() {
 }
 // browserify ./public/javascripts/blackJack.js > ./public/javascripts/blackJackBundle.js
 
-},{"./blackjack/Dealer":2,"./blackjack/checkWin":3,"./blackjack/shuffleDeck":4}],2:[function(require,module,exports){
+},{"./blackjack/Dealer":2,"./blackjack/checkWin":3,"./blackjack/shuffleAnimation":4,"./blackjack/shuffleDeck":5}],2:[function(require,module,exports){
 "use strict";
 
 var socket = io();
@@ -263,7 +286,8 @@ Dealer.prototype.hit = function() {
         dealerScore.textContent = total;
       });
 
-
+    var dealSound = new Audio("../sounds/blackjack_deal.wav");
+    dealSound.play();
     cardCount += 1;
 
     if (total > 21) {
@@ -302,29 +326,13 @@ module.exports = function(total) {
 }
 
 },{}],4:[function(require,module,exports){
-"use strict";
-
-module.exports = function () {
-  var shuffleDeck = getDeck();
-  var currentIndex = shuffleDeck.length;
-  var temporaryValue;
-  var randomIndex;
-
-  shuffleAnimation();
-
-  while(currentIndex !== 0) {
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-
-    temporaryValue = shuffleDeck[currentIndex];
-    shuffleDeck[currentIndex] = shuffleDeck[randomIndex];
-    shuffleDeck[randomIndex] = temporaryValue;
-  }
-  return shuffleDeck;
-}
 var deckCardImg = document.querySelectorAll(".deckCard");
-var i = 0;
-function shuffleAnimation() {
+var shuffleSound = new Audio("../sounds/blackjack_shuffle.wav");
+
+module.exports = function() {
+  setTimeout(function() {
+    shuffleSound.play();
+  }, 200);
   move(deckCardImg[0]).y(150).end(function() {
     move(deckCardImg[0]).y(0).set("z-index", Math.floor(Math.random()*7) + 1).delay("0.6s").end();
   });
@@ -346,6 +354,26 @@ function shuffleAnimation() {
   move(deckCardImg[6]).y(150).delay("1.2s").end(function() {
     move(deckCardImg[6]).y(0).set("z-index", Math.floor(Math.random()*7) + 1).delay("0.6s").end();
   });
+}
+
+},{}],5:[function(require,module,exports){
+"use strict";
+
+module.exports = function () {
+  var shuffleDeck = getDeck();
+  var currentIndex = shuffleDeck.length;
+  var temporaryValue;
+  var randomIndex;
+
+  while(currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    temporaryValue = shuffleDeck[currentIndex];
+    shuffleDeck[currentIndex] = shuffleDeck[randomIndex];
+    shuffleDeck[randomIndex] = temporaryValue;
+  }
+  return shuffleDeck;
 }
 
 function getDeck() {

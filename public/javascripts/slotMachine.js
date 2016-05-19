@@ -10,6 +10,8 @@ var slotReel = document.querySelectorAll(".slotReel");
 
 spinBtn.addEventListener("click", rollSlots);
 function rollSlots() {
+  var spinSound = new Audio("../sounds/slotmachine_spin2.mp3");
+  spinSound.play();
   if(chips > 0) {
     spinBtn.removeEventListener("click", rollSlots);
     spinBtn.style.backgroundColor = "#317134";
@@ -63,6 +65,8 @@ function checkWin() {
     // Check if 3 in a row. Odds are around 1/30.
     var values = [slotReel[0].getAttribute("value"), slotReel[1].getAttribute("value"), slotReel[2].getAttribute("value")];
     if (values[0] === values[1] && values[0] === values[2]) {
+      var winSound = new Audio("../sounds/slotmachine_win.wav");
+      winSound.play();
         if (values[0] === "0") {
           // 50
           chips += 100;
@@ -93,22 +97,6 @@ function checkWin() {
         document.querySelector("#scoreScore").querySelector("span").textContent = score.toString();
     }
 }
-
-/* Scrapped lever animation code
-function leverAnimation() {
-    var leverInterval = setInterval(function() {
-        lever.style.top = (lever.offsetTop + 5 + "px");
-        lever2.style.height = (lever2.offsetHeight - 5 + "px");
-        lever2.style.top = (lever2.offsetTop + 5 + "px");
-        if (lever.offsetTop > 220) {
-            clearInterval(leverInterval);
-            lever.style.top = 100 + "px";
-            lever2.style.height = 260 + "px";
-            lever2.style.top = 140 + "px";
-        }
-    }, 20);
-}
-*/
 
 function getRandomNumber() {
     return Math.floor(Math.random() * 5);

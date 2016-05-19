@@ -56,7 +56,8 @@ Dealer.prototype.hit = function() {
         dealerScore.textContent = total;
       });
 
-
+    var dealSound = new Audio("../sounds/blackjack_deal.wav");
+    dealSound.play();
     cardCount += 1;
 
     if (total > 21) {

@@ -37,15 +37,20 @@
 <div id="coverDiv">
   <div id="checkoutBox">
     <h2>Checkout from the casino?</h2>
-    <p>This will end your game and your chips will be counted towards the highscore.</p>
+    <p>
+      This will end your game and your chips will be counted towards the highscore.
+      <br><br>
+      Must be atleast 3 characters long and can only contain alphanumerics.
+    </p>
     <form action="/checkout" method="post">
         Name: <br>
-        <input type="text" name="nameText"><br>
+        <input type="text" id="nameText" name="nameText" value=""><br>
         <button class="coverDivLink"><u><b>Checkout</b></u></button>
         <div class="coverDivLink"><u>Back</u></div>
         <input type="hidden" name="csrfToken" value="{{csrfToken}}">
     </form>
   </div>
+  <!--
   <div id="aboutBox">
     <h2>About</h2>
     <p></p>
@@ -61,11 +66,13 @@
     <p></p>
     <div class="coverDivLink"><u>Back</u></div>
   </div>
+-->
 </div>
+<!--
 <footer>
   <p>About</p>
   <p>Contact</p>
   <p>Credit</p>
-</footer>
+</footer>-->
 
 <script src="/javascripts/home.js"></script>

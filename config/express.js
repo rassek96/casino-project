@@ -30,7 +30,7 @@ module.exports = function () {
   app.set("view engine", "hbs");
 
   app.use(function(request, response, next) {
-    if((!request.session.chips) || request.session.chips === null) {
+    if(request.session.chips === undefined) {
       request.session.chips = 50;
     }
     next();
@@ -73,7 +73,7 @@ module.exports = function () {
 
   app.use(function(request, response) {
     response.status(404);
-    response.send("Sorry, page doesn't exist");
+    response.redirect("/");
   });
 
   app.use(function(error, request, response, next) {
