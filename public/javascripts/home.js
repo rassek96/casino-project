@@ -23,7 +23,7 @@ checkoutDiv.addEventListener("click", function() {
 });
 
 nameText.addEventListener("keyup", function() {
-  if(nameText.value.length < 3 || isValid(nameText.value) === false) {
+  if(nameText.value.length < 3 || nameText.value.length > 20 || isValid(nameText.value) === false) {
     coverDivLink[0].style.backgroundColor = "gray";
     coverDivLink[0].style.pointerEvents = "none";
 

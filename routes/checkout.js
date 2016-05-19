@@ -7,7 +7,7 @@ var Highscore = require("../config/db/Highscore");
 router.route("/checkout")
     .post(function(request, response) {
         if(request.body.csrfToken === request.session.csrfToken) {
-          if(request.body.nameText.length < 3 || isValid(request.body.nameText) === false) {
+          if(request.body.nameText.length < 3 || request.body.nameText.length > 20 || isValid(request.body.nameText) === false) {
             response.redirect("/");
           } else {
             var highscore = new Highscore({
