@@ -95,7 +95,7 @@ function hit() {
     cardValue = 10;
   }
   //Check if card was ace
-  if(aceCheck === true && total === cardValue) {
+  if(aceCheck === true) {
     if(cardCount === 1) {
       total += 11;
     } else if((total + 11) < 11 && (total + 11) > 7) {
