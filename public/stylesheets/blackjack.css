@@ -90,7 +90,15 @@
   text-align: center;
   z-index: 1;
 }
-#playerScore, #dealerScore {
+#splitCardBox {
+  width: 125px;
+  height: 181.5px;
+  position: absolute;
+  left: -150px;
+  top: -2px;
+  visibility: hidden;
+}
+#playerScore, #dealerScore, #splitScore {
   position: absolute;
   top: -20px;
   left: 50%;
@@ -130,7 +138,7 @@
 #aceButtons {
   top: -12px;
 }
-#hitBtn, #stayBtn, #doubleDownBtn, #surrenderBtn, #startBtn, #ace1Btn, #ace11Btn {
+#hitBtn, #stayBtn, #doubleDownBtn, #surrenderBtn, #splitBtn, #startBtn, #ace1Btn, #ace11Btn {
   width: 100px;
   height: 60px;
   padding: 1px;
@@ -147,7 +155,12 @@
 #hitBtn, #stayBtn, #doubleDownBtn, #surrenderBtn {
   float: left;
 }
-#hitBtn:active, #stayBtn:active, #doubleDownBtn:active, #surrenderBtn:active, #startBtn:active, #ace1Btn:active, #ace11Btn:active {
+#splitBtn {
+  position: absolute;
+  margin-left: 80px;
+  visibility: hidden;
+}
+#hitBtn:active, #stayBtn:active, #doubleDownBtn:active, #surrenderBtn:active, #splitBtn:active, #startBtn:active, #ace1Btn:active, #ace11Btn:active {
   background-color: #3e8e41;
   box-shadow: 0 5px #666;
   transform: translateY(4px);

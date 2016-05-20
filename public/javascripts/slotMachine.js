@@ -7,10 +7,11 @@ var score = 0;
 var chips = document.querySelector("#scoreChips").querySelector("span").innerText;
 var marginTopAttr = [-160, -360, -560, -760, -960, -1160];
 var slotReel = document.querySelectorAll(".slotReel");
+var spinSound = new Audio("../sounds/slotmachine_spin.mp3");
+var stopSound = new Audio("../sounds/slotmachine_stop2.mp3");
 
 spinBtn.addEventListener("click", rollSlots);
 function rollSlots() {
-  var spinSound = new Audio("../sounds/slotmachine_spin2.mp3");
   spinSound.play();
   if(chips > 0) {
     spinBtn.removeEventListener("click", rollSlots);
@@ -42,7 +43,10 @@ function reelAnimation(i, numberStop) {
             clearInterval(slotInterval);
             slotReel[i].style.webkitFilter = "blur(0px)";
             slotReel[i].setAttribute("value", numberStop);
+            stopSound.play();
             if (i === 2) {
+                spinSound.pause();
+                spinSound.currentTime = 0;
                 checkWin();
                 setTimeout(function() {
                   spinBtn.addEventListener("click", rollSlots);
@@ -95,6 +99,9 @@ function checkWin() {
         socket.emit("changeChips", {chips: chips});
         document.querySelector("#scoreChips").querySelector("span").textContent = chips.toString();
         document.querySelector("#scoreScore").querySelector("span").textContent = score.toString();
+    } else {
+      var loseSound = new Audio("../sounds/slotmachine_lose2.mp3");
+      loseSound.play();
     }
 }
 

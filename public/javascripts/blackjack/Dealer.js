@@ -9,22 +9,15 @@ var buttonsDiv = document.querySelector("#buttons");
 var startGameDiv = document.querySelector("#startGame");
 var startBtn = document.querySelector("#startBtn");
 
-function Dealer(shuffledDeck, cardCount, playerTotal, playerChips, bet) {
-  this.shuffledDeck = shuffledDeck;
-  this.cardCount = cardCount;
-  this.playerTotal = playerTotal;
-  this.total = 0;
-  this.playerChips = playerChips;
-  this.bet = bet;
-};
+function dealerHit(shuffledDeck, cardCount, playerTotal, playerChips, bet, splitCheck, callback) {
 
-Dealer.prototype.hit = function() {
-  var shuffledDeck = this.shuffledDeck;
-  var cardCount = this.cardCount;
-  var playerTotal = this.playerTotal;
-  var total = this.total;
-  var playerChips = this.playerChips;
-  var bet = this.bet;
+  var shuffledDeck = shuffledDeck;
+  var cardCount = cardCount;
+  var playerTotal = playerTotal;
+  var total = 0;
+  var playerChips = playerChips;
+  var bet = bet;
+  var splitCheck = splitCheck;
   var hitInterval = setInterval(function() {
     var card = shuffledDeck[cardCount];
     //Add cardvalue to total sum
@@ -62,16 +55,24 @@ Dealer.prototype.hit = function() {
 
     if (total > 21) {
       clearInterval(hitInterval);
+      if(splitCheck === true) {
+        callback(true, cardCount);
+      } else {
+        stay();
+        startGameDiv.querySelector("p").textContent = "Winner";
+      }
       playerChips += (bet * 2);
       document.querySelector("#playerChips span").textContent = playerChips;
       socket.emit("changeChips", {chips: playerChips});
-      stay();
-      startGameDiv.querySelector("p").textContent = "Winner";
 
     } else if(total > playerTotal) {
       clearInterval(hitInterval);
-      stay();
-      startGameDiv.querySelector("p").textContent = "Loser";
+      if(splitCheck === true) {
+        callback(true, cardCount);
+      } else {
+        stay();
+        startGameDiv.querySelector("p").textContent = "Loser";
+      }
     }
   }, 1000);
 };
@@ -82,4 +83,4 @@ function stay() {
   buttonsDiv.querySelector("#btn").style.display = "none";
 }
 
-module.exports = Dealer;
+module.exports.dealerHit = dealerHit;

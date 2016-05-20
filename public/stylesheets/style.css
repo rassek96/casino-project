@@ -36,9 +36,8 @@ body {
     background:rgba(255,255,255,0.6);
   width: 95%;
   max-width: 1200px;
-  min-height: 92%;
-  max-height: 95%;
-    overflow-y: auto;
+  min-height: 93%;
+  overflow-y: auto;
   margin: auto;
 }
 #content span {
@@ -75,7 +74,7 @@ body {
 #checkoutDiv:hover, #checkoutDivResponsive a:hover {
   color: whitesmoke;
 }
-#slotDiv, #blackjackDiv, #wheelDiv {
+#slotDiv, #blackjackDiv, #wheelDiv, #rouletteDiv {
     width: 100%;
     background-color: seagreen;
     padding: 1%;
@@ -88,12 +87,16 @@ body {
   padding-bottom: 2%;
 }
 
-#slotDiv:hover, #blackjackDiv:hover, #wheelDiv:hover {
+#slotDiv:hover, #blackjackDiv:hover, #wheelDiv:hover, #rouletteDiv:hover {
     background:rgba(255,255,255,0.6);
 }
-#slotDiv img, #blackjackDiv img, #wheelDiv img {
+#slotDiv img, #blackjackDiv img, #wheelDiv img, #rouletteDiv img {
     width: 100%;
     height: 100%;
+}
+#rouletteDiv img {
+  width: 80%;
+  height: 80%;
 }
 #highscores {
   width: 100%;
@@ -102,7 +105,7 @@ body {
 #highscores table {
   width: 100%;
   margin: auto;
-  margin-top: -10px;
+  margin-top: -16px;
 }
 #highscores td, #highscores th {
   border-bottom: 1px solid black;
