@@ -14,6 +14,7 @@ var doubleDownBtn = document.querySelector("#doubleDownBtn");
 var surrenderBtn = document.querySelector("#surrenderBtn");
 var splitBtn = document.querySelector("#splitBtn");
 var splitCardBox = document.querySelector("#splitCardBox");
+var splitScore = document.querySelector("#splitScore");
 var playerCardBox = document.querySelector("#playerCardBox");
 var dealerCardBox = document.querySelector("#dealerCardBox");
 var dealerDeckBox = document.querySelector("#dealerDeckBox");
@@ -103,6 +104,8 @@ function hit() {
     } else {
       total += 1;
     }
+    playerScore.textContent = total;
+    splitScore.textContent = total;
   }
   if(cardValue === 1) {
     if(total + 11 === 21) {
