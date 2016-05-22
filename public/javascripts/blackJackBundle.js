@@ -120,7 +120,6 @@ function hit() {
 
   removeBtnEventListeners();
   dealCard(card, cardImg, cardCount, splitCheck, total, function() {
-    playerScore.textContent = total;
     checkWin();
     addBtnEventListeners();
   });
@@ -324,6 +323,7 @@ module.exports = function(card, cardImg, cardCount, split, total, callback) {
       .add("left", Math.floor(Math.random()* ((0-4)+1) + 4))
       .rotate(Math.floor(Math.random()* ((182-178)+1) + 178))
       .end(function() {
+        playerScore.textContent = total;
         callback();
       });
   } else {
