@@ -39,6 +39,7 @@ body {
   min-height: 93%;
   overflow-y: auto;
   margin: auto;
+  position: relative;
 }
 #content span {
     font-size: 24px;
@@ -157,6 +158,23 @@ footer p:hover {
   transform: translate(-50%, -50%);
   display: none;
   text-align: center;
+  padding: 20px;
+  padding-top: 0px;
+  overflow-y: auto;
+  max-height: 94%;
+}
+#aboutBox table, #contactBox table, #creditBox table {
+  font-size: 14px;
+  color: rgb(50,50,50);
+  margin: auto;
+}
+#contactBox td, #creditBox td {
+  padding: 5px;
+  text-align: left;
+}
+#aboutBox p, #creditBox p, #contactBox p {
+  font-size: 14px;
+  color: rgb(50,50,50);
 }
 .coverDivLink {
   margin: 18px;
@@ -171,7 +189,7 @@ footer p:hover {
   font-family: "Arial Black", Gadget, sans-serif;
 }
 .coverDivLink:hover {
-  background-color: gray;
+  background-color: gray !important;
 }
 .coverDivLink a {
   color: black;

@@ -85,7 +85,11 @@ function checkWin() {
           score += 5000;
         } else if (values[0] === "3") {
           // 7
-          chips += 7;
+          if ((Math.floor(Math.random() * 2) + 1) === 1) {
+            chips += 7;
+          } else {
+            chips += 77;
+          }
           score += 700;
         } else if (values[0] === "4") {
           // 5

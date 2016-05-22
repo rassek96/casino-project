@@ -39,9 +39,9 @@ var cardImg;
 var cardValue;
 startBtn.addEventListener("click", startTheGame);
 var dealSound = new Audio("../sounds/blackjack_deal.wav");
+var staySound = new Audio("../sounds/blackjack_select.wav");
 
 function startTheGame() {
-  var staySound = new Audio("../sounds/blackjack_select.wav");
   staySound.play();
   startBtn.removeEventListener("click", startTheGame);
   startGameDiv.style.display = "none";
@@ -104,8 +104,6 @@ function hit() {
     } else {
       total += 1;
     }
-    playerScore.textContent = total;
-    splitScore.textContent = total;
   }
   if(cardValue === 1) {
     if(total + 11 === 21) {
@@ -121,6 +119,7 @@ function hit() {
 
   removeBtnEventListeners();
   dealCard(card, cardImg, cardCount, splitCheck, total, function() {
+    playerScore.textContent = total;
     checkWin();
     addBtnEventListeners();
   });
@@ -169,7 +168,6 @@ function split() {
 }
 
 function stay() {
-  var staySound = new Audio("../sounds/blackjack_select.wav");
   staySound.play();
   removeBtnEventListeners();
   if(aceCheck === true) {
@@ -200,7 +198,6 @@ function stay() {
 }
 
 function doubleDown() {
-  var staySound = new Audio("../sounds/blackjack_select.wav");
   staySound.play();
   if((bet*2) < playerChips) {
     removeBtnEventListeners();
@@ -216,7 +213,6 @@ function doubleDown() {
 }
 
 function surrender() {
-  var staySound = new Audio("../sounds/blackjack_select.wav");
   staySound.play();
   playerChips += Math.floor(bet/2);
   playerChipsDiv.textContent = playerChips;
