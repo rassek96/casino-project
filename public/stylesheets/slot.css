@@ -76,6 +76,7 @@
     border: goldenrod 2px solid;
     background:rgba(230,224,223,0);
     overflow: hidden;
+    pointer-events: none;
 }
 #spinBtn {
   width: 100px;
