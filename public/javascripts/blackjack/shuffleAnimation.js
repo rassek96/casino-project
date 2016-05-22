@@ -1,5 +1,5 @@
 var deckCardImg = document.querySelectorAll(".deckCard");
-var shuffleSound = new Audio("../sounds/blackjack_shuffle.wav");
+var shuffleSound = new Audio("../sounds/blackjack_shuffle.mp3");
 
 module.exports = function() {
   setTimeout(function() {

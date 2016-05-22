@@ -38,8 +38,8 @@ var splitCheck = false;
 var cardImg;
 var cardValue;
 startBtn.addEventListener("click", startTheGame);
-var dealSound = new Audio("../sounds/blackjack_deal.wav");
-var staySound = new Audio("../sounds/blackjack_select.wav");
+var dealSound = new Audio("../sounds/blackjack_deal.mp3");
+var staySound = new Audio("../sounds/blackjack_select.mp3");
 
 function startTheGame() {
   staySound.play();
@@ -84,7 +84,7 @@ function hit() {
   if(cardCount > 1) {
     doubleDownBtn.style.visibility = "hidden";
     surrenderBtn.style.visibility = "hidden";
-    var hitSound = new Audio("../sounds/blackjack_hit.wav");
+    var hitSound = new Audio("../sounds/blackjack_hit.mp3");
     hitSound.play();
   }
   var card = shuffledDeck[cardCount];

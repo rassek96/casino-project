@@ -69,7 +69,7 @@ function checkWin() {
     // Check if 3 in a row. Odds are around 1/30.
     var values = [slotReel[0].getAttribute("value"), slotReel[1].getAttribute("value"), slotReel[2].getAttribute("value")];
     if (values[0] === values[1] && values[0] === values[2]) {
-      var winSound = new Audio("../sounds/slotmachine_win.wav");
+      var winSound = new Audio("../sounds/slotmachine_win.mp3");
       winSound.play();
         if (values[0] === "0") {
           // 50

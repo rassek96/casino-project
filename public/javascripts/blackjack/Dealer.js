@@ -49,7 +49,7 @@ function dealerHit(shuffledDeck, cardCount, playerTotal, playerChips, bet, split
         dealerScore.textContent = total;
       });
 
-    var dealSound = new Audio("../sounds/blackjack_deal.wav");
+    var dealSound = new Audio("../sounds/blackjack_deal.mp3");
     dealSound.play();
     cardCount += 1;
 
