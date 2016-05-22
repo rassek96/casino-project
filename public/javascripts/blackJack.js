@@ -119,7 +119,6 @@ function hit() {
 
   removeBtnEventListeners();
   dealCard(card, cardImg, cardCount, splitCheck, total, function() {
-    playerScore.textContent = total;
     checkWin();
     addBtnEventListeners();
   });
