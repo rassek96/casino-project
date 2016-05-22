@@ -63,7 +63,6 @@ body {
   color: rgb(40,40,40);
   font-size: 18px;
   cursor: pointer;
-  width: fit-content;
   margin: auto;
 }
 #checkoutDivResponsive {
@@ -120,7 +119,6 @@ td {
 #frontImage {
   width: 100%;
   margin: auto;
-  pointer-events: none;
 }
 #frontImage img {
   width: 100%;
