@@ -97,7 +97,9 @@ function hit() {
   }
   //Check if card was ace
   if(aceCheck === true) {
-    if(cardCount === 1) {
+    if(cardCount === 1 && total === 0) {
+      total += 12;
+    } else if(cardCount === 1) {
       total += 11;
     } else if((total + 11) < 11 && (total + 11) > 7) {
       total += 11;
@@ -124,7 +126,7 @@ function hit() {
   });
 
   //Check if cards dealt were pairs (possible to split)
-  if(cardCount === 1 && cardValue === (total-cardValue)) {
+  if(cardCount === 1 && cardValue === (total-cardValue) || (cardCount === 1 && total === 12)) {
     splitBtn.style.visibility = "visible";
     if(cardValue === 0 || cardValue === 11) {
       cardValue = 11;

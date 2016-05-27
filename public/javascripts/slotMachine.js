@@ -12,13 +12,13 @@ var stopSound = new Audio("../sounds/slotmachine_stop2.mp3");
 
 spinBtn.addEventListener("click", rollSlots);
 function rollSlots() {
-  spinSound.play();
   if(chips > 0) {
     spinBtn.removeEventListener("click", rollSlots);
     spinBtn.style.backgroundColor = "#317134";
     chips -= 1;
     socket.emit("changeChips", {chips: chips});
     document.querySelector("#scoreChips").querySelector("span").textContent = chips.toString();
+    spinSound.play();
     reelAnimation(0, getRandomNumber());
 
     setTimeout(function() {
