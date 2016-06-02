@@ -69,7 +69,7 @@ module.exports = function () {
   app.use("/", require("../routes/blackjack.js"));
   app.use("/", require("../routes/checkout.js"));
 
-  app.use(express.static("public"));
+  //app.use(express.static("public"));
 
   app.use(function(request, response) {
     response.status(404);
