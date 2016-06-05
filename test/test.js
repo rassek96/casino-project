@@ -71,7 +71,7 @@ describe("API", function() {
     });
 
     it("Invalid path redirect", function(done) {
-      api.get("/invalidpath")
+      api.get("/invalidPath")
       .expect(404)
       .end(function(error, response) {
         expect(response).to.have.status(302);
