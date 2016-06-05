@@ -45,6 +45,7 @@ var staySound = new Audio("../sounds/blackjack_select.mp3");
 function startTheGame() {
   staySound.play();
   startBtn.removeEventListener("click", startTheGame);
+  removeBtnEventListeners();
   startGameDiv.style.display = "none";
   buttonsDiv.style.display = "inline";
   buttonsDiv.querySelector("#btn").style.display = "inline";
@@ -98,9 +99,7 @@ function hit() {
   }
   //Check if card was ace
   if(aceCheck === true) {
-    if(cardCount === 1 && total === 0) {
-      total += 12;
-    } else if(cardCount === 1) {
+    if(cardCount === 1 && cardValue > 6) {
       total += 11;
     } else if((total + 11) < 11 && (total + 11) > 7) {
       total += 11;
@@ -121,7 +120,7 @@ function hit() {
   total += cardValue;
 
   removeBtnEventListeners();
-  dealCard(card, cardImg, cardCount, splitCheck, total, function() {
+  dealCard(card, cardImg, cardCount, splitCheck, total, aceCheck, function() {
     checkWin();
     addBtnEventListeners();
   });
@@ -312,7 +311,7 @@ var playerCardBox = document.querySelector("#playerCardBox");
 var playerScore = document.querySelector("#playerScore");
 var splitScore = document.querySelector("#splitScore");
 
-module.exports = function(card, cardImg, cardCount, split, total, callback) {
+module.exports = function(card, cardImg, cardCount, split, total, aceCheck, callback) {
   cardImg = document.createElement("img");
   cardImg.setAttribute("src", "/images/carddeck/" + card + ".png");
   cardImg.setAttribute("class", "cardImg");
@@ -325,7 +324,11 @@ module.exports = function(card, cardImg, cardCount, split, total, callback) {
       .add("left", Math.floor(Math.random()* ((0-4)+1) + 4))
       .rotate(Math.floor(Math.random()* ((182-178)+1) + 178))
       .end(function() {
-        playerScore.textContent = total;
+        if(aceCheck === true && cardCount != 0) {
+          playerScore.textContent = total + " (" + (total+1) + "/" + (total+11) + ")";
+        } else {
+          playerScore.textContent = total;
+        }
         callback();
       });
   } else {
@@ -334,7 +337,11 @@ module.exports = function(card, cardImg, cardCount, split, total, callback) {
       .add("left", Math.floor(Math.random()* (-147-(-149)) + (-149)))
       .rotate(Math.floor(Math.random()* ((182-178)+1) + 178))
       .end(function() {
-        splitScore.textContent = total;
+        if(aceCheck === true && cardCount != 0) {
+          splitScore.textContent = total + " (" + (total+1) + "/" + (total+11) + ")";
+        } else {
+          splitScore.textContent = total;
+        }
         callback();
       });
   }
@@ -408,7 +415,7 @@ function dealerHit(shuffledDeck, cardCount, playerTotal, playerChips, bet, split
       document.querySelector("#playerChips span").textContent = playerChips;
       socket.emit("changeChips", {chips: playerChips});
 
-    } else if(total > playerTotal) {
+    } else if(total >= playerTotal) {
       clearInterval(hitInterval);
       if(splitCheck === true) {
         callback(true, cardCount);

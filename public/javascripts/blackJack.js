@@ -44,6 +44,7 @@ var staySound = new Audio("../sounds/blackjack_select.mp3");
 function startTheGame() {
   staySound.play();
   startBtn.removeEventListener("click", startTheGame);
+  removeBtnEventListeners();
   startGameDiv.style.display = "none";
   buttonsDiv.style.display = "inline";
   buttonsDiv.querySelector("#btn").style.display = "inline";
@@ -97,9 +98,7 @@ function hit() {
   }
   //Check if card was ace
   if(aceCheck === true) {
-    if(cardCount === 1 && total === 0) {
-      total += 12;
-    } else if(cardCount === 1) {
+    if(cardCount === 1 && cardValue > 6) {
       total += 11;
     } else if((total + 11) < 11 && (total + 11) > 7) {
       total += 11;
@@ -120,7 +119,7 @@ function hit() {
   total += cardValue;
 
   removeBtnEventListeners();
-  dealCard(card, cardImg, cardCount, splitCheck, total, function() {
+  dealCard(card, cardImg, cardCount, splitCheck, total, aceCheck, function() {
     checkWin();
     addBtnEventListeners();
   });

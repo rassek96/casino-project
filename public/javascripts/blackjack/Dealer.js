@@ -65,7 +65,7 @@ function dealerHit(shuffledDeck, cardCount, playerTotal, playerChips, bet, split
       document.querySelector("#playerChips span").textContent = playerChips;
       socket.emit("changeChips", {chips: playerChips});
 
-    } else if(total > playerTotal) {
+    } else if(total >= playerTotal) {
       clearInterval(hitInterval);
       if(splitCheck === true) {
         callback(true, cardCount);
