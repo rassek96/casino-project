@@ -21,9 +21,11 @@ router.route("/")
           }
         }
         data = sortByKey(data, "score");
+        var highscoreData = [];
         for (var i = 0; i < 5; i += 1) {
 
           data[i].id = i+1;
+          var highscoreData[i] = data[i];
         }
         response.render("home", {data: data});
       });
