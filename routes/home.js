@@ -27,7 +27,7 @@ router.route("/")
           data[i].id = i+1;
           var highscoreData[i] = data[i];
         }
-        response.render("home", {data: data});
+        response.render("home", {data: highscoreData});
       });
     });
 
