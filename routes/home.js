@@ -14,14 +14,14 @@ router.route("/")
         }
         var data = [];
         //TODO htmlescape
-        for (var i = 0; i < 5; i += 1) {
+        for (var i = 0; i < highscores.length; i += 1) {
           if(highscores[i]) {
             var escapedUsername = htmlEscape.htmlEscape(highscores[i].username);
             data.push({id: i, username: escapedUsername, score: highscores[i].score});
           }
         }
         data = sortByKey(data, "score");
-        for (var i = 0; i < data.length; i += 1) {
+        for (var i = 0; i < 5; i += 1) {
 
           data[i].id = i+1;
         }
