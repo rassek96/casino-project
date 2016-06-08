@@ -1,0 +1,176 @@
+#slotContent {
+    width: 1200px;
+    height: 92%;
+    min-height: 600px;
+    margin: auto;
+    position: relative;
+    background:rgba(255,255,255,0.6);
+}
+#scoreBoard {
+    width: 90%;
+    position: absolute;
+    top: -41px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 80px;
+    background-color: #505050;
+    border-top-right-radius: 40px;
+    border-top-left-radius: 40px;
+    border: 1px solid black;
+    border-bottom: none;
+}
+#scoreChips, #scoreScore, #scoreSlot {
+    width: 31%;
+    height: 90%;
+    background-color: #151515;
+    color: whitesmoke;
+    text-align: center;
+    margin-top: 1%;
+}
+#scoreChips {
+    border-top-left-radius: 35px;
+    margin-left: 1%;
+    float: left;
+    font-size: 18px;
+}
+#scoreSlot {
+    display: inline-block;
+    margin-left: 16px;
+    font-size: 24px;
+}
+#scoreScore {
+    border-top-right-radius: 35px;
+    margin-right: 1%;
+    float: right;
+    font-size: 18px;
+}
+#outerMachine {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 400px;
+    background-color: dimgray;
+    border-radius: 10px;
+    border: 1px black solid;
+}
+
+#middleMachine {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    height: 80%;
+    background-color: #151515;
+    border-radius: 3px;
+}
+.slot {
+    float: left;
+    width: 30%;
+    margin-left: 2.1%;
+    margin-top: 0.7%;
+    height: 96%;
+    border-radius: 5px;
+    border: goldenrod 2px solid;
+    background:rgba(230,224,223,0);
+    overflow: hidden;
+    pointer-events: none;
+}
+#spinBtn {
+  width: 100px;
+  height: 60px;
+  padding: 1px;
+  font-size: 20px;
+  margin: 7px;
+  cursor: pointer;
+  background-color: #3e8e41;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px #999;
+}
+#spinBtn:active {
+  background-color: #3a9941;
+  box-shadow: 0 5px #666;
+  transform: translateY(1px);
+}
+#btnBoard {
+    width: 90%;
+    position: absolute;
+    top: 441px;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    height: 80px;
+    background-color: #505050;
+    border-bottom-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+    border: 1px solid black;
+    border-top: none;
+    text-align: center;
+}
+
+
+/* Scrapped lever css
+#lever1 {
+    background-color: #505050;
+    width: 40px;
+    height: 80px;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+    top: 62%;
+    transform: translate(-50%, -50%);
+    left: 981px;
+    position: absolute;
+    border: 1px solid black;
+}
+#lever1a {
+    background-color: #595959;
+    width: 30px;
+    height: 40px;
+    border-bottom-right-radius: 8px;
+    top: 62%;
+    transform: translate(-50%, -50%);
+    left: 1018px;
+    position: absolute;
+    border: 1px solid black;
+}
+#lever2 {
+    background-color: #545454;
+    width: 20px;
+    height: 260px;
+    left: 1018px;
+    top: 45.5%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    border: 1px solid black;
+    border-bottom: none;
+}
+#leverBall {
+    background-color: red;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    position: absolute;
+    left: 1018px;
+    top: 27%;
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+}*/
+.slotIcon {
+    width: 100%;
+    height: 50%;
+    margin-top: 80px;
+}
+
+.slotReel {
+    width: 100%;
+    margin-top: -160px;
+    position: relative;
+}
+.slotReel img {
+    width: 100%;
+}

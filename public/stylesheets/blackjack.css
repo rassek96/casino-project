@@ -1,0 +1,191 @@
+#blackjackContent {
+    min-width: 1200px;
+    width: 95%;
+    height: 91%;
+    min-height: 620px;
+    margin: auto;
+    position: relative;
+    padding-top: 10px;
+}
+#surface {
+    position: relative;
+    background-color: darkred;
+    width: 90%;
+    height: 90%;
+    border-radius: 100px 100px 1000px 1000px;
+    margin: auto;
+    border: 15px solid saddlebrown;
+}
+
+#dealerBox {
+    width: 40%;
+    margin: auto;
+    height: 225px;
+    border: whitesmoke 5px solid;
+}
+#textContent {
+    left: 50%;
+    top: 235px;
+    position: absolute;
+    font-size: 26px;
+    transform: translate(-50%, -50%);
+    color: goldenrod;
+    margin: auto;
+}
+#dealerDeckBox {
+  width: 181.5px;
+  height: 125px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid whitesmoke;
+}
+.cardImg {
+  transform: rotate(90deg);
+  width: 125px;
+  height: 181.5px;
+  border-radius: 6px;
+  position: absolute;
+  left: 28px;
+  top: -28px;
+  pointer-events: none;
+  z-index: 2;
+}
+.deckCard {
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+  border-bottom: 0.8px solid whitesmoke;
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+#dealerCardBox {
+  width: 125px;
+  height: 181.5px;
+  position: absolute;
+  border: 2px solid whitesmoke;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  margin-top: -16px;
+  margin-left: -141px;
+}
+#playerCardBox {
+  width: 125px;
+  height: 181.5px;
+  position: absolute;
+  margin:auto;
+  bottom: 0;
+  left: 50%;
+  margin-left: -62.5px;
+  margin-bottom: 10px;
+  border: 2px solid whitesmoke;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  z-index: 1;
+}
+#splitCardBox {
+  width: 125px;
+  height: 181.5px;
+  position: absolute;
+  left: -150px;
+  top: -2px;
+  visibility: hidden;
+}
+#playerScore, #dealerScore, #splitScore {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  width: 120px;
+  transform: translate(-50%, -50%);
+}
+#startGame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 16px;
+  color: whitesmoke;
+}
+#startGame select {
+  width: 45px;
+  height: 25px;
+  background-color: whitesmoke;
+  cursor: pointer;
+}
+#startGame p {
+  font-size: 20px;
+  color: whitesmoke;
+
+}
+#buttons, #aceButtons {
+  width: 500px;
+  height: auto;
+  position: absolute;
+  top: -65px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+#aceButtons {
+  top: -12px;
+}
+#hitBtn, #stayBtn, #doubleDownBtn, #surrenderBtn, #splitBtn, #startBtn, #ace1Btn, #ace11Btn {
+  width: 100px;
+  height: 60px;
+  padding: 1px;
+  font-size: 20px;
+  margin: 12px;
+  cursor: pointer;
+  background-color: #4CAF50;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px #999;
+}
+#hitBtn, #stayBtn, #doubleDownBtn, #surrenderBtn {
+  float: left;
+}
+#splitBtn {
+  position: absolute;
+  margin-left: 80px;
+  visibility: hidden;
+}
+#hitBtn:active, #stayBtn:active, #doubleDownBtn:active, #surrenderBtn:active, #splitBtn:active, #startBtn:active, #ace1Btn:active, #ace11Btn:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+#playerChips {
+  position: absolute;
+  color: whitesmoke;
+  left: 140px;
+  width: 150px;
+  text-align: left;
+  bottom: 0px;
+}
+#deck2 {
+  top: -0.8px;
+}
+#deck3 {
+  top: -1.6px;
+}
+#deck4 {
+  top: -2.4px;
+}
+#deck5 {
+  top: -3.2px;
+}
+#deck6 {
+  top: -4px;
+}
+#deck7 {
+  top: -4.8px;
+}

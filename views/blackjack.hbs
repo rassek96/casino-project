@@ -1,0 +1,56 @@
+<div id="blackjackContent">
+  <div id="dealerBox">
+    <div id="dealerDeckBox">
+      <img class="deckCard" id="deck1" src="/images/carddeck/card_backside.jpg">
+      <img class="deckCard" id="deck2" src="/images/carddeck/card_backside.jpg">
+      <img class="deckCard" id="deck3" src="/images/carddeck/card_backside.jpg">
+      <img class="deckCard" id="deck4" src="/images/carddeck/card_backside.jpg">
+      <img class="deckCard" id="deck5" src="/images/carddeck/card_backside.jpg">
+      <img class="deckCard" id="deck6" src="/images/carddeck/card_backside.jpg">
+      <img class="deckCard" id="deck7" src="/images/carddeck/card_backside.jpg">
+      <div id="dealerCardBox">
+        <div id="dealerScore">0</div>
+      </div>
+    </div>
+
+    <div id="startGame">
+      <p>Welcome to Blackjack</p>
+      <button id="startBtn">Start Game</button>
+      <br>
+      Bet amount:
+      <select>
+        <option value="1">1</option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+        <option value="25">25</option>
+        <option value="50">50</option>
+        <option value="All">All</option>
+      </select>
+    </div>
+  </div>
+
+  <div id="playerCardBox">
+    <div id="buttons">
+      <div id="btn">
+        <button id="doubleDownBtn">Double Down</button>
+        <button id="hitBtn">Hit</button>
+        <button id="stayBtn">Stay</button>
+        <button id="surrenderBtn">Surrender</button><br><br><br><br>
+        <button id="splitBtn">Split</button>
+      </div>
+
+      <div id="aceButtons">Ace worth 1 or 11?<br>
+        <button id="ace1Btn">1</button>
+        <button id="ace11Btn">11</button>
+      </div>
+    </div>
+    <div id="playerScore">0</div>
+    <div id="playerChips">Chips: <span>{{this.chips}}</span></div>
+    <div id="splitCardBox"><div id="splitScore">0</div></div>
+  </div>
+</div>
+<script type="text/javascript" src="/javascripts/move.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/javascripts/blackJackBundle.js"></script>

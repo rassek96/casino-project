@@ -1,0 +1,24 @@
+<div id="slotContainer"></div>
+<div id="slotContent">
+    <div id="outerMachine">
+        <div id="scoreBoard">
+            <div id="scoreChips">Chips Left:<br><span>{{this.chips}}</span></div>
+            <div id="scoreSlot">Slot<br>Machine</div>
+            <div id="scoreScore">Score:<br><span>0</span></div>
+        </div>
+        <div id="middleMachine">
+            <div class="slot"><div class="slotReel"><img src="/images/slotreel.jpg"></div></div>
+            <div class="slot"><div class="slotReel"><img src="/images/slotreel.jpg"></div></div>
+            <div class="slot"><div class="slotReel"><img src="/images/slotreel.jpg"></div></div>
+        </div>
+        <div id="btnBoard"><button id="spinBtn">Spin</button></div>
+    </div>
+
+    <!--
+    <div id="lever1"></div>
+    <div id="lever1a"></div>
+    <div id="lever2"></div>
+    <div id="leverBall"></div>-->
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/javascripts/slotMachine.js"></script>

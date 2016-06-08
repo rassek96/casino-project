@@ -1,0 +1,58 @@
+@media only screen and (max-width: 720px) {
+  #gamesDiv {
+    width: 99%;
+  }
+  #gamesDiv span {
+    display: none !important;
+    position: absolute;
+    top: -9999px !important;
+    left: -9999px !important;
+  }
+  #userDiv {
+    width: 98%;
+    margin: 0;
+    float: none;
+    margin-bottom: 5px;
+    margin: auto;
+  }
+  #slotDiv, #blackjackDiv {
+    margin-bottom: 1%;
+    width: 47%;
+  }
+  #blackjackDiv {
+    float: right;
+    margin-right: 1%
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  /* Home */
+  #frontImage, #userDiv span:nth-of-type(1), #checkoutBox, #aboutBox, #contactBox, #creditBox, footer, #coverDiv, #checkoutDiv {
+    display: none !important;
+    position: absolute !important;
+    top: -9999px !important;
+    left: -9999px !important;
+  }
+  #gamesDiv {
+    width: 96%;
+  }
+  #userDiv {
+    margin: 0;
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  #slotDiv, #blackjackDiv {
+    margin-bottom: 1%;
+    width: 100%;
+  }
+  #blackjackDiv {
+    float: left;
+    margin-right: 0;
+  }
+  #highscores {
+    margin-bottom: 20px;
+  }
+  #checkoutDivResponsive {
+    display: block !important;
+  }
+}

@@ -1,0 +1,205 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+body {
+    font-family: "Arial Black", Gadget, sans-serif;
+    /* background pattern from subtlepatterns.com */
+    background-image: url("/images/background.png");
+    background-repeat: repeat;
+    background-color: darkgreen;
+}
+#header {
+    width: 100%;
+    height: 60px;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+#header a {
+    text-decoration: none;
+    font-size: 44px;
+    height: 100%;
+    width: 100%;
+    opacity: 0.6;
+    color: white;
+}
+#header a:visited {
+    color: white;
+}
+#header a:hover {
+    color: white;
+    opacity: 1;
+}
+#content {
+    background:rgba(255,255,255,0.6);
+  width: 95%;
+  max-width: 1200px;
+  min-height: 93%;
+  overflow-y: auto;
+  margin: auto;
+  position: relative;
+}
+#content span {
+    font-size: 24px;
+}
+#gamesDiv {
+    width: 25%;
+    margin: 1%;
+    height: 96%;
+    float: left;
+    text-align: center;
+}
+#userDiv {
+    width: 71%;
+    margin: 1%;
+    height: 96%;
+    float: right;
+    text-align: center;
+}
+#checkoutDiv, #checkoutDivResponsive {
+  padding: 5px;
+  color: rgb(40,40,40);
+  font-size: 18px;
+  cursor: pointer;
+  width: fit-content;
+  margin: auto;
+}
+#checkoutDivResponsive {
+  display: none !important;
+}
+#checkoutDivResponsive a {
+  color: rgb(40,40,40);
+}
+#checkoutDiv:hover, #checkoutDivResponsive a:hover {
+  color: whitesmoke;
+}
+#slotDiv, #blackjackDiv, #wheelDiv, #rouletteDiv {
+    width: 100%;
+    background-color: seagreen;
+    padding: 1%;
+    border-radius: 2px;
+    margin-bottom: 3%;
+    float: left;
+}
+#blackjackDiv img {
+  padding-top: 7.5%;
+  padding-bottom: 2%;
+}
+
+#slotDiv:hover, #blackjackDiv:hover, #wheelDiv:hover, #rouletteDiv:hover {
+    background:rgba(255,255,255,0.6);
+}
+#slotDiv img, #blackjackDiv img, #wheelDiv img, #rouletteDiv img {
+    width: 100%;
+    height: 100%;
+}
+#rouletteDiv img {
+  width: 80%;
+  height: 80%;
+}
+#highscores {
+  width: 100%;
+  margin: auto;
+}
+#highscores table {
+  width: 100%;
+  margin: auto;
+  margin-top: -16px;
+}
+#highscores td, #highscores th {
+  border-bottom: 1px solid black;
+}
+th {
+  font-size: 19px;
+}
+td {
+  font-size: 16px;
+}
+#frontImage {
+  width: 100%;
+  margin: auto;
+  pointer-events: none;
+}
+#frontImage img {
+  width: 100%;
+}
+
+footer {
+  background:rgba(255,255,255,0.6);
+  width: 95%;
+  max-width: 1200px;
+  min-height: 60px;
+  overflow: auto;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  line-height: 60px;
+  font-size: 18px;
+}
+footer p {
+  display: inline;
+  margin: 2%;
+  color: rgb(50,50,50);
+  cursor: pointer;
+}
+footer p:hover {
+  color: whitesmoke;
+}
+
+#checkoutBox, #aboutBox, #contactBox, #creditBox {
+  position: absolute;
+  background-color: whitesmoke;
+  width: 65%;
+  max-width: 800px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  text-align: center;
+  padding: 20px;
+  padding-top: 0px;
+  overflow-y: auto;
+  max-height: 94%;
+}
+#aboutBox table, #contactBox table, #creditBox table {
+  font-size: 14px;
+  color: rgb(50,50,50);
+  margin: auto;
+}
+#contactBox td, #creditBox td {
+  padding: 5px;
+  text-align: left;
+}
+#aboutBox p, #creditBox p, #contactBox p {
+  font-size: 14px;
+  color: rgb(50,50,50);
+}
+.coverDivLink {
+  margin: 18px;
+  color: black;
+  width: 40%;
+  display: inline-block;
+  background-color: seagreen;
+  cursor: pointer;
+  padding-bottom: 2px;
+  border: none;
+  font-size: 16px;
+  font-family: "Arial Black", Gadget, sans-serif;
+}
+.coverDivLink:hover {
+  background-color: gray !important;
+}
+.coverDivLink a {
+  color: black;
+  display: block;
+}
+#coverDiv {
+  height: 100%;
+  width: 100%;
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
