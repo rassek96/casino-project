@@ -11,7 +11,7 @@ var randomString = require("./randomString");
 module.exports = function () {
   // Server configurations
   var app = express();
-  var port = process.env.PORT || 8000;
+  var port = process.env.PORT || 5000;
 
   app.engine("hbs", exphbs({
     defaultLayout: "index",
@@ -68,8 +68,11 @@ module.exports = function () {
   app.use("/", require("../routes/slotmachine.js"));
   app.use("/", require("../routes/blackjack.js"));
   app.use("/", require("../routes/checkout.js"));
+  app.use("/", require("../routes/wheelOfFortune.js"));
+  app.use("/", require("../routes/yahtzee.js"));
+  app.use("/", require("../routes/roulette.js"));
 
-  //app.use(express.static("public"));
+  app.use(express.static("public"));
 
   app.use(function(request, response) {
     response.status(404);

@@ -24,8 +24,10 @@ router.route("/")
         var highscoreData = [];
         for (var i = 0; i < 5; i += 1) {
 
-          data[i].id = i+1;
-          highscoreData[i] = data[i];
+          if(data[i]) {
+            data[i].id = i+1;
+            highscoreData[i] = data[i];
+          }
         }
         response.render("home", {data: highscoreData});
       });

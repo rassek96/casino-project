@@ -8,6 +8,9 @@
     top: -9999px !important;
     left: -9999px !important;
   }
+  #gamesDiv a {
+    font-size: 12px;
+  }
   #userDiv {
     width: 98%;
     margin: 0;
@@ -15,11 +18,11 @@
     margin-bottom: 5px;
     margin: auto;
   }
-  #slotDiv, #blackjackDiv {
+  #slotDiv, #blackjackDiv, #wheelOfFortuneDiv, #rouletteDiv, #yahtzeeDiv {
     margin-bottom: 1%;
     width: 47%;
   }
-  #blackjackDiv {
+  #blackjackDiv, #wheelOfFortuneDiv {
     float: right;
     margin-right: 1%
   }
@@ -36,16 +39,19 @@
   #gamesDiv {
     width: 96%;
   }
+  #gamesDiv a {
+    font-size: 18px;
+  }
   #userDiv {
     margin: 0;
     width: 100%;
     margin-bottom: 5px;
   }
-  #slotDiv, #blackjackDiv {
+  #slotDiv, #blackjackDiv, #wheelOfFortuneDiv, #rouletteDiv, #yahtzeeDiv {
     margin-bottom: 1%;
     width: 100%;
   }
-  #blackjackDiv {
+  #blackjackDiv, #wheelOfFortuneDiv {
     float: left;
     margin-right: 0;
   }
