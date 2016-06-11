@@ -1,4 +1,49 @@
+<div id="wheelContent">
+    <div id="wheelBorder">
+        <div id="middleBall">
 
+        </div>
+        <div id="wheelPointer"></div>
+        <div id="wheel">
+            <div id="innerWheel1"></div>
+            <div id="innerWheel2"></div>
+            <div id="innerWheel3"></div>
+            <div id="innerWheel4"></div>
+            <div id="innerWheel5"></div>
+            <div id="innerWheel6"></div>
+            <div id="innerWheel7"></div>
+            <div id="innerWheel8"></div>
+        </div>
+    </div>
 
+    <div id="startWheelGame">
+        <h2>Wheel of Fortune</h2>
+        <div id="wheelChips">Chips Left: <span>{{this.chips}}</span></div>
+        <div id="wheelVisible">
+            Bet amount:
+            <select id="wheelSelectBet">
+                <option value="1">1</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+            </select>
+            <br>
+            On Colour:
+            <select id="wheelSelectColour">
+                <option value="yellow">Yellow</option>
+                <option value="blue">Blue</option>
+                <option value="red">Red</option>
+                <option value="green">Green</option>
+            </select>
+            <br><br>
+            <button id="spinWheelBtn">Spin Wheel</button>
+        </div>
+        <br>
+        <div id="betAndColour"></div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/javascripts/move.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="/javascripts/wheelOfFortune.js"></script>

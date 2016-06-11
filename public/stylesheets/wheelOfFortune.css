@@ -1,0 +1,140 @@
+#wheelContent {
+    width: 1200px;
+    height: 90%;
+    min-height: 595px;
+    margin: auto;
+    position: relative;
+    background:rgba(255,255,255,0.6);
+}
+#wheelBorder {
+    width: 550px;
+    height: 550px;
+    border: 3px solid white;
+    position: absolute;
+    border-radius: 50%;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+}
+#wheelPointer {
+    right: 550px;
+    margin: auto;
+    position: absolute;
+    top: 11px;
+    left: 48%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 25px solid white;
+}
+#wheel {
+    width: 550px;
+    height: 550px;
+    background-color: whitesmoke;
+    margin: auto;
+    border-radius: 50%;
+    overflow: hidden;
+}
+#innerWheel1, #innerWheel2, #innerWheel3, #innerWheel4, #innerWheel5, #innerWheel6, #innerWheel7, #innerWheel8 {
+    width: 0;
+    height: 0;
+    border-left: 100px solid transparent;
+    border-right: 225px solid transparent;
+    float: left;
+}
+#innerWheel1 {
+    border-bottom: 225px solid blue;
+    transform: rotate(20deg);
+}
+#innerWheel2 {
+    border-bottom: 225px solid red;
+    transform: rotate(-25deg);
+    margin-top: -97px;
+    margin-left: -80px;
+}
+#innerWheel3 {
+    border-bottom: 225px solid green;
+    transform: rotate(-70deg);
+    margin-left: -292px;
+    margin-top: 50px;
+}
+#innerWheel4 {
+    border-bottom: 225px solid yellow;
+    transform: rotate(-115deg);
+    margin-top: 130px;
+    margin-left: -197px;
+}
+#innerWheel5 {
+    border-bottom: 225px solid blue;
+    transform: rotate(-160deg);
+    margin-top: -258px;
+    margin-left: 228px;
+}
+#innerWheel6 {
+    border-bottom: 225px solid red;
+    transform: rotate(-205deg);
+    margin-top: -386px;
+    margin-left: 308px;
+}
+#innerWheel7 {
+    border-bottom: 225px solid green;
+    transform: rotate(-250deg);
+    margin-top: -533px;
+    margin-left: 275px;
+}
+#innerWheel8 {
+    border-bottom: 225px solid yellow;
+    transform: rotate(-295deg);
+    margin-top: -610px;
+    margin-left: 147px;
+}
+#middleBall {
+    background-color: whitesmoke;
+    border: black solid 1px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+#spinWheelBtn {
+    width: 100px;
+    height: 60px;
+    padding: 1px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #3e8e41;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px #999;
+    margin: auto;
+}
+#spinWheelBtn:active {
+    background-color: #3a9941;
+    box-shadow: 0 5px #666;
+    transform: translateY(1px);
+}
+#startWheelGame {
+    float: right;
+    text-align: center;
+    background: rgba(255,255,255,0.5);
+    padding: 10px;
+    height: 90%;
+    width: 46%;
+    position: absolute;
+    top: 50%;
+    left: 74.5%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 3px 2px 3px rgba(255,255,255,0.4);
+}
+#betAndColour {
+    display: none;
+}

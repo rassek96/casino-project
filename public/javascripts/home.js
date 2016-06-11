@@ -55,6 +55,7 @@ footerLink[2].addEventListener("click", function() {
 });
 
 function coverHide() {
+  document.getElementsByTagName("body")[0].style.overflow = "auto";
   content.style.opacity = 1;
   footer.style.opacity = 1;
   header.style.opacity = 1;
@@ -67,6 +68,8 @@ function coverHide() {
   coverDivLink[1].removeEventListener("click", coverHide);
 }
 function cover() {
+  window.scrollTo(0, 0);
+  document.getElementsByTagName("body")[0].style.overflow = "hidden";
   content.style.opacity = 0.3;
   footer.style.opacity = 0.3;
   header.style.opacity = 0.3;
